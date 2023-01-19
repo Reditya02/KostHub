@@ -6,10 +6,10 @@ import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
 
 @Parcelize
-data class BaseResponse(
+data class BaseResponse<T>(
 
 	@field:SerializedName("data")
-	val data: @RawValue Any? = null,
+	val data: @RawValue T? = null,
 
 	@field:SerializedName("message")
 	val message: String,

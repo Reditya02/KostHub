@@ -1,6 +1,7 @@
 package com.example.kosthub.data.remote
 
 import com.example.kosthub.data.remote.model.request.*
+import com.example.kosthub.data.remote.model.response.AuthResponse
 import com.example.kosthub.data.remote.model.response.BaseResponse
 import retrofit2.Call
 import retrofit2.http.Body
@@ -10,22 +11,22 @@ interface ApiService {
 
     //Auth
     @POST("/v1/auth/login")
-    fun login(@Body body: LoginRequest): Call<BaseResponse>
+    fun login(@Body body: LoginRequest): Call<BaseResponse<AuthResponse>>
 
     @POST("/v1/auth/penyewa/register")
-    fun registerPenyewa(@Body body: RegisterRequest): Call<BaseResponse>
+    fun registerPenyewa(@Body body: RegisterRequest): Call<BaseResponse<AuthResponse>>
 
     @POST("/v1/auth/pencari/register")
-    fun registerPencari(@Body body: RegisterRequest): Call<BaseResponse>
+    fun registerPencari(@Body body: RegisterRequest): Call<BaseResponse<AuthResponse>>
 
     @POST("/v1/auth/password")
-    fun changePassword(@Body body: ChangePasswordRequest): Call<BaseResponse>
+    fun changePassword(@Body body: ChangePasswordRequest): Call<BaseResponse<Unit>>
 
     //OTP
     @POST("/v1/verify/request")
-    fun requestOTP(@Body body: RequestOTPRequest): Call<BaseResponse>
+    fun requestOTP(@Body body: RequestOTPRequest): Call<BaseResponse<Unit>>
 
     @POST("/v1/verify")
-    fun verifyOTP(@Body body: VerifyOTPRequest): Call<BaseResponse>
+    fun verifyOTP(@Body body: VerifyOTPRequest): Call<BaseResponse<Unit>>
 
 }

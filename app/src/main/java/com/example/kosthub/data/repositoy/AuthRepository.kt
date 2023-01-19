@@ -1,10 +1,13 @@
 package com.example.kosthub.data.repositoy
 
+import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import com.example.kosthub.data.locale.auth.AuthPreferences
 import com.example.kosthub.data.remote.ApiService
 import com.example.kosthub.data.remote.model.request.LoginRequest
 import com.example.kosthub.data.remote.model.response.AuthResponse
 import com.example.kosthub.data.remote.model.response.BaseResponse
+import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -15,27 +18,27 @@ class AuthRepository @Inject constructor(
     private val pref: AuthPreferences
 ) {
 
-    private val noResponse = BaseResponse(data = null, message = "no response", status = "error")
+    private val noResponse = BaseResponse(data = AuthResponse(), message = "no response", status = "error")
 
     fun test(): Int {
         return 1
     }
 
-    fun login(data: LoginRequest): BaseResponse {
-        var apiResponse: BaseResponse = noResponse
+    fun login(data: LoginRequest): MutableLiveData<BaseResponse<AuthResponse>> {
+        val apiResponse = MutableLiveData(noResponse)
         val apiRequest = apiService.login(data)
-        apiRequest.enqueue(object : Callback<BaseResponse> {
-            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+        apiRequest.enqueue(object : Callback<BaseResponse<AuthResponse>> {
+            override fun onResponse(call: Call<BaseResponse<AuthResponse>>, response: Response<BaseResponse<AuthResponse>>) {
                 response.body()?.let {
-                    apiResponse = it
+                    apiResponse.value = it
                     if (it.status == "OK") {
                         pref.setUser(it.data as AuthResponse)
                     }
                 }
             }
 
-            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                apiResponse = BaseResponse(data = null, message = t.toString(), status = "error")
+            override fun onFailure(call: Call<BaseResponse<AuthResponse>>, t: Throwable) {
+                apiResponse.value = BaseResponse(data = null, message = t.toString(), status = "error")
             }
         })
         return apiResponse
