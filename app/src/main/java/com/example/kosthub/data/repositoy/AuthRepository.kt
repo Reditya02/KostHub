@@ -6,6 +6,7 @@ import com.example.kosthub.data.remote.ApiService
 import com.example.kosthub.data.remote.model.request.ChangePasswordRequest
 import com.example.kosthub.data.remote.model.request.LoginRequest
 import com.example.kosthub.data.remote.model.request.RegisterRequest
+import com.example.kosthub.data.remote.model.request.RequestOTPRequest
 import com.example.kosthub.data.remote.model.response.AuthResponse
 import com.example.kosthub.data.remote.model.response.BaseResponse
 import com.example.kosthub.utils.Role
@@ -25,7 +26,7 @@ class AuthRepository @Inject constructor(
         status = "error"
     )
 
-    private val noChangePasswordResponse = BaseResponse(
+    private val noUnitResponse = BaseResponse(
         data = Unit,
         message = "no response",
         status = "error"
@@ -90,8 +91,30 @@ class AuthRepository @Inject constructor(
     }
 
     fun changePassword(data: ChangePasswordRequest): MutableLiveData<BaseResponse<Unit>> {
-        val apiResponse = MutableLiveData(noChangePasswordResponse)
+        val apiResponse = MutableLiveData(noUnitResponse)
         val apiRequest = apiService.changePassword(data)
+
+        apiRequest.enqueue(object : Callback<BaseResponse<Unit>> {
+            override fun onResponse(
+                call: Call<BaseResponse<Unit>>,
+                response: Response<BaseResponse<Unit>>
+            ) {
+                response.body()?.let {
+                    apiResponse.value = it
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<Unit>>, t: Throwable) {
+                apiResponse.value = BaseResponse(data = null, message = t.toString(), status = "error")
+            }
+        })
+
+        return apiResponse
+    }
+
+    fun requestOTP(data: RequestOTPRequest): MutableLiveData<BaseResponse<Unit>> {
+        val apiResponse = MutableLiveData(noUnitResponse)
+        val apiRequest = apiService.requestOTP(data)
 
         apiRequest.enqueue(object : Callback<BaseResponse<Unit>> {
             override fun onResponse(
