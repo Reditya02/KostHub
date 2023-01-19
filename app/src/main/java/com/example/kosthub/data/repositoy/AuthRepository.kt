@@ -1,15 +1,14 @@
 package com.example.kosthub.data.repositoy
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.example.kosthub.data.locale.auth.AuthPreferences
 import com.example.kosthub.data.remote.ApiService
+import com.example.kosthub.data.remote.model.request.ChangePasswordRequest
 import com.example.kosthub.data.remote.model.request.LoginRequest
 import com.example.kosthub.data.remote.model.request.RegisterRequest
 import com.example.kosthub.data.remote.model.response.AuthResponse
 import com.example.kosthub.data.remote.model.response.BaseResponse
 import com.example.kosthub.utils.Role
-import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,18 +19,25 @@ class AuthRepository @Inject constructor(
     private val pref: AuthPreferences
 ) {
 
-    private val noResponse = BaseResponse(
+    private val noAuthResponse = BaseResponse(
         data = AuthResponse(),
         message = "no response",
         status = "error"
     )
+
+    private val noChangePasswordResponse = BaseResponse(
+        data = Unit,
+        message = "no response",
+        status = "error"
+    )
+
 
     fun test(): Int {
         return 1
     }
 
     fun login(data: LoginRequest): MutableLiveData<BaseResponse<AuthResponse>> {
-        val apiResponse = MutableLiveData(noResponse)
+        val apiResponse = MutableLiveData(noAuthResponse)
         val apiRequest = apiService.login(data)
 
         apiRequest.enqueue(object : Callback<BaseResponse<AuthResponse>> {
@@ -55,7 +61,7 @@ class AuthRepository @Inject constructor(
     }
 
     fun register(data: RegisterRequest, role: Role): MutableLiveData<BaseResponse<AuthResponse>> {
-        val apiResponse = MutableLiveData(noResponse)
+        val apiResponse = MutableLiveData(noAuthResponse)
         val apiRequest =
             if (role == Role.pencari)
                 apiService.registerPencari(data)
@@ -76,6 +82,28 @@ class AuthRepository @Inject constructor(
             }
 
             override fun onFailure(call: Call<BaseResponse<AuthResponse>>, t: Throwable) {
+                apiResponse.value = BaseResponse(data = null, message = t.toString(), status = "error")
+            }
+        })
+
+        return apiResponse
+    }
+
+    fun changePassword(data: ChangePasswordRequest): MutableLiveData<BaseResponse<Unit>> {
+        val apiResponse = MutableLiveData(noChangePasswordResponse)
+        val apiRequest = apiService.changePassword(data)
+
+        apiRequest.enqueue(object : Callback<BaseResponse<Unit>> {
+            override fun onResponse(
+                call: Call<BaseResponse<Unit>>,
+                response: Response<BaseResponse<Unit>>
+            ) {
+                response.body()?.let {
+                    apiResponse.value = it
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<Unit>>, t: Throwable) {
                 apiResponse.value = BaseResponse(data = null, message = t.toString(), status = "error")
             }
         })
