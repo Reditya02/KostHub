@@ -2,6 +2,7 @@ package com.example.kosthub.data.locale.auth
 
 import android.content.Context
 import com.example.kosthub.data.model.user.UserProfile
+import com.example.kosthub.data.remote.model.response.AuthResponse
 import com.google.gson.Gson
 
 class AuthPreferences(context: Context) {
@@ -22,12 +23,12 @@ class AuthPreferences(context: Context) {
         }
     }
 
-    fun getUser(): UserProfile {
+    fun getUser(): AuthResponse {
         val user = preferences.getString(userKey, null)
-        return Gson().fromJson(user, UserProfile::class.java)
+        return Gson().fromJson(user, AuthResponse::class.java)
     }
 
-    fun setUser(user: UserProfile) {
+    fun setUser(user: AuthResponse) {
         val json = Gson().toJson(user)
         preferences.edit().putString(userKey, json).apply()
     }

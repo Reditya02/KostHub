@@ -6,14 +6,14 @@ import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
 
 @Parcelize
-data class Response(
+data class BaseResponse(
 
 	@field:SerializedName("data")
 	val data: @RawValue Any? = null,
 
 	@field:SerializedName("message")
-	val message: String? = null,
+	val message: String,
 
 	@field:SerializedName("status")
-	val status: String? = null
+	val status: String
 ) : Parcelable

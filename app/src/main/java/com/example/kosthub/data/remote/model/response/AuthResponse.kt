@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class LoginResponse(
+data class AuthResponse(
 
 	@field:SerializedName("access_token")
 	val accessToken: String? = null,
