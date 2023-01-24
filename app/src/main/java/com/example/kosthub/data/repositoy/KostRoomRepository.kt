@@ -12,7 +12,6 @@ import com.example.kosthub.data.remote.model.kostroom.response.SearchRoomRespons
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.security.acl.Owner
 import javax.inject.Inject
 
 class KostRoomRepository @Inject constructor(

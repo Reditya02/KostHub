@@ -1,6 +1,5 @@
 package com.example.kosthub.data.remote
 
-import android.util.Size
 import com.example.kosthub.data.remote.model.user.response.AuthResponse
 import com.example.kosthub.data.remote.model.BaseResponse
 import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
@@ -101,6 +100,7 @@ interface ApiService {
         @Body body: AddKostRequest
     ): Call<BaseResponse<Unit>>
 
+    //TODO: Pengajuan kamar dan addroom
     //Room
     @GET("/v1/search")
     fun searchRoom(
