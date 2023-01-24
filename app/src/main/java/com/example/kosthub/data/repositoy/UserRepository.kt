@@ -1,6 +1,5 @@
 package com.example.kosthub.data.repositoy
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.kosthub.data.locale.auth.AuthPreferences
 import com.example.kosthub.data.remote.ApiService
@@ -9,12 +8,19 @@ import com.example.kosthub.data.remote.model.response.AuthResponse
 import com.example.kosthub.data.remote.model.response.BaseResponse
 import com.example.kosthub.data.remote.model.response.DetailUserResponse
 import com.example.kosthub.utils.Role
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
 import javax.inject.Inject
 
-class AuthRepository @Inject constructor(
+class UserRepository @Inject constructor(
     private val apiService: ApiService,
     private val pref: AuthPreferences
 ) {
@@ -195,6 +201,60 @@ class AuthRepository @Inject constructor(
     fun updateBankAccount(data: UpdateBankAccountRequest): MutableLiveData<BaseResponse<Unit>> {
         val apiResponse = MutableLiveData(noUnitResponse)
         val apiRequest = apiService.updateBankAccount(pref.getToken(), data)
+
+        apiRequest.enqueue(object : Callback<BaseResponse<Unit>> {
+            override fun onResponse(
+                call: Call<BaseResponse<Unit>>,
+                response: Response<BaseResponse<Unit>>
+            ) {
+                response.body()?.let {
+                    apiResponse.value = it
+                    if (it.status == "OK") {
+                        getDetailUser(pref.getToken())
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<Unit>>, t: Throwable) {
+                apiResponse.value = BaseResponse(data = null, message = t.toString(), status = "error")
+            }
+        })
+        return apiResponse
+    }
+
+    private fun toRequestBody(text: String): RequestBody {
+        return text.toRequestBody("text/plain".toMediaType())
+    }
+
+    fun updateProfile(data: UpdateProfileRequest): MutableLiveData<BaseResponse<Unit>> {
+        var fullname: RequestBody
+        var birthdate: RequestBody
+        var gender: RequestBody
+        var occupation: RequestBody
+        var photo: MultipartBody.Part
+
+        data.let {
+            fullname = toRequestBody(it.fullname)
+            birthdate = toRequestBody(it.birthdate)
+            gender = toRequestBody(it.gender)
+            occupation = toRequestBody(it.occupation)
+            val photoFile = it.photo.asRequestBody("image/jpeg".toMediaTypeOrNull())
+            photo = MultipartBody.Part.createFormData(
+                "photo",
+                data.photo.name,
+                photoFile
+            )
+        }
+
+        val apiResponse = MutableLiveData(noUnitResponse)
+        val apiRequest = apiService.updateProfile(
+            token = pref.getToken(),
+            photo = photo,
+            fullname = fullname,
+            birthdate = birthdate,
+            gender = gender,
+            occupation = occupation
+        )
 
         apiRequest.enqueue(object : Callback<BaseResponse<Unit>> {
             override fun onResponse(

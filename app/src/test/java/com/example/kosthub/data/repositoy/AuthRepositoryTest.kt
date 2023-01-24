@@ -23,7 +23,7 @@ class AuthRepositoryTest {
 
     @get:Rule val hiltRule = HiltAndroidRule(this)
 
-    @Inject lateinit var repository: AuthRepository
+    @Inject lateinit var repository: UserRepository
 
     @Before
     fun setup() {
@@ -34,7 +34,7 @@ class AuthRepositoryTest {
     fun checkLoginSuccess() {
         val data = LoginRequest(password = "Pencari123", email = "redityapencari@mail.com")
         val result = repository.login(data)
-        assertEquals("OK", result.status)
+        assertEquals("OK", result.value?.status)
     }
 
     @Test

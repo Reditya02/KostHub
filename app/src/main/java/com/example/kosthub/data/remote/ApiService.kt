@@ -4,11 +4,15 @@ import com.example.kosthub.data.remote.model.request.*
 import com.example.kosthub.data.remote.model.response.AuthResponse
 import com.example.kosthub.data.remote.model.response.BaseResponse
 import com.example.kosthub.data.remote.model.response.DetailUserResponse
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.Part
 
 interface ApiService {
 
@@ -50,6 +54,16 @@ interface ApiService {
         @Header("Authorization") token: String
     ): Call<BaseResponse<DetailUserResponse>>
 
+    @Multipart
+    @POST("/v1/account/profile")
+    fun updateProfile(
+        @Header("Authorization") token: String,
+        @Part photo: MultipartBody.Part,
+        @Part("fullname") fullname: RequestBody,
+        @Part("birthdate") birthdate: RequestBody,
+        @Part("gender") gender: RequestBody,
+        @Part("occupation") occupation: RequestBody
+    ): Call<BaseResponse<Unit>>
 
     @POST("/v1/account/bank")
     fun updateBankAccount(
