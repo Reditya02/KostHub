@@ -1,5 +1,6 @@
 package com.example.kosthub.data.repositoy
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.kosthub.data.locale.auth.AuthPreferences
 import com.example.kosthub.data.remote.ApiService
@@ -190,4 +191,31 @@ class AuthRepository @Inject constructor(
 
         return apiResponse
     }
+
+    fun updateBankAccount(data: UpdateBankAccountRequest): MutableLiveData<BaseResponse<Unit>> {
+        val apiResponse = MutableLiveData(noUnitResponse)
+        val apiRequest = apiService.updateBankAccount(pref.getToken(), data)
+
+        apiRequest.enqueue(object : Callback<BaseResponse<Unit>> {
+            override fun onResponse(
+                call: Call<BaseResponse<Unit>>,
+                response: Response<BaseResponse<Unit>>
+            ) {
+                response.body()?.let {
+                    apiResponse.value = it
+                    if (it.status == "OK") {
+                        getDetailUser(pref.getToken())
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<Unit>>, t: Throwable) {
+                apiResponse.value = BaseResponse(data = null, message = t.toString(), status = "error")
+            }
+        })
+        return apiResponse
+    }
+
+
+
 }

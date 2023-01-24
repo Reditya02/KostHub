@@ -50,4 +50,11 @@ interface ApiService {
         @Header("Authorization") token: String
     ): Call<BaseResponse<DetailUserResponse>>
 
+
+    @POST("/v1/account/bank")
+    fun updateBankAccount(
+        @Header("Authorization") token: String,
+        @Body body: UpdateBankAccountRequest
+    ): Call<BaseResponse<Unit>>
+
 }
