@@ -65,6 +65,16 @@ interface ApiService {
         @Part("occupation") occupation: RequestBody
     ): Call<BaseResponse<Unit>>
 
+    @Multipart
+    @POST("/v1/account/verification")
+    fun updateIdentity(
+        @Header("Authorization") token: String,
+        @Part photo: MultipartBody.Part,
+        @Part("email") email: RequestBody,
+        @Part("phone") phone: RequestBody,
+        @Part("type") type: RequestBody
+    ): Call<BaseResponse<Unit>>
+
     @POST("/v1/account/bank")
     fun updateBankAccount(
         @Header("Authorization") token: String,

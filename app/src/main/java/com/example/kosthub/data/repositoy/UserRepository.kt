@@ -43,10 +43,6 @@ class UserRepository @Inject constructor(
         status = "error"
     )
 
-    fun test(): Int {
-        return 1
-    }
-
     fun login(data: LoginRequest): MutableLiveData<BaseResponse<AuthResponse>> {
         val apiResponse = MutableLiveData(noAuthResponse)
         val apiRequest = apiService.login(data)
@@ -254,6 +250,46 @@ class UserRepository @Inject constructor(
             birthdate = birthdate,
             gender = gender,
             occupation = occupation
+        )
+
+        apiRequest.enqueue(object : Callback<BaseResponse<Unit>> {
+            override fun onResponse(
+                call: Call<BaseResponse<Unit>>,
+                response: Response<BaseResponse<Unit>>
+            ) {
+                response.body()?.let {
+                    apiResponse.value = it
+                    if (it.status == "OK") {
+                        getDetailUser(pref.getToken())
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<Unit>>, t: Throwable) {
+                apiResponse.value = BaseResponse(data = null, message = t.toString(), status = "error")
+            }
+        })
+        return apiResponse
+    }
+
+    fun updateIdentity(data: UpdateIdentityRequest): MutableLiveData<BaseResponse<Unit>> {
+        val email = toRequestBody(data.email)
+        val phone = toRequestBody(data.phone)
+        val type = toRequestBody(data.type)
+        val photoFile = data.photo.asRequestBody("image/jpeg".toMediaTypeOrNull())
+        val photo = MultipartBody.Part.createFormData(
+            "photo",
+            data.photo.name,
+            photoFile
+        )
+
+        val apiResponse = MutableLiveData(noUnitResponse)
+        val apiRequest = apiService.updateIdentity(
+            token = pref.getToken(),
+            photo = photo,
+            email = email,
+            phone = phone,
+            type = type
         )
 
         apiRequest.enqueue(object : Callback<BaseResponse<Unit>> {
