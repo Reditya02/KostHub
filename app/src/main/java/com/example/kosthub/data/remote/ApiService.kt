@@ -3,6 +3,7 @@ package com.example.kosthub.data.remote
 import com.example.kosthub.data.remote.model.user.response.AuthResponse
 import com.example.kosthub.data.remote.model.BaseResponse
 import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
+import com.example.kosthub.data.remote.model.kostroom.response.GetRoomByIdResponse
 import com.example.kosthub.data.remote.model.user.response.DetailUserResponse
 import com.example.kosthub.data.remote.model.user.request.*
 import okhttp3.MultipartBody
@@ -14,6 +15,7 @@ import retrofit2.http.Header
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
+import retrofit2.http.Path
 
 interface ApiService {
 
@@ -94,6 +96,12 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Body body: AddKostRequest
     ): Call<BaseResponse<Unit>>
+
+    //Room
+    @GET("/v1/rooms/{roomId}")
+    fun getRoomById(
+        @Path("roomId") id: String,
+    ): Call<BaseResponse<GetRoomByIdResponse>>
 
 
 }

@@ -5,6 +5,7 @@ import com.example.kosthub.data.locale.auth.AuthPreferences
 import com.example.kosthub.data.remote.ApiService
 import com.example.kosthub.data.remote.model.BaseResponse
 import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
+import com.example.kosthub.data.remote.model.kostroom.response.GetRoomByIdResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,6 +17,12 @@ class KostRoomRepository @Inject constructor(
 ) {
     private val noUnitResponse = BaseResponse(
         data = Unit,
+        message = "no response",
+        status = "error"
+    )
+
+    private val noRoomByIdResponse = BaseResponse(
+        data = GetRoomByIdResponse(),
         message = "no response",
         status = "error"
     )
@@ -57,6 +64,28 @@ class KostRoomRepository @Inject constructor(
             }
 
             override fun onFailure(call: Call<BaseResponse<Unit>>, t: Throwable) {
+                apiResponse.value = BaseResponse(data = null, message = t.toString(), status = "error")
+            }
+        })
+
+        return apiResponse
+    }
+
+    fun getRoomById(id: String): MutableLiveData<BaseResponse<GetRoomByIdResponse>> {
+        val apiResponse = MutableLiveData(noRoomByIdResponse)
+        val apiRequest = apiService.getRoomById(id)
+
+        apiRequest.enqueue(object : Callback<BaseResponse<GetRoomByIdResponse>> {
+            override fun onResponse(
+                call: Call<BaseResponse<GetRoomByIdResponse>>,
+                response: Response<BaseResponse<GetRoomByIdResponse>>
+            ) {
+                response.body()?.let {
+                    apiResponse.value = it
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<GetRoomByIdResponse>>, t: Throwable) {
                 apiResponse.value = BaseResponse(data = null, message = t.toString(), status = "error")
             }
         })
