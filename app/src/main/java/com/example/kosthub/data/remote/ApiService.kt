@@ -89,5 +89,11 @@ interface ApiService {
         @Body body: AddKostRequest
     ): Call<BaseResponse<Unit>>
 
+    @POST("/v1/kost/update")
+    fun updateKost(
+        @Header("Authorization") token: String,
+        @Body body: AddKostRequest
+    ): Call<BaseResponse<Unit>>
+
 
 }
