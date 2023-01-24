@@ -1,9 +1,10 @@
 package com.example.kosthub.data.remote
 
-import com.example.kosthub.data.remote.model.request.*
-import com.example.kosthub.data.remote.model.response.AuthResponse
-import com.example.kosthub.data.remote.model.response.BaseResponse
-import com.example.kosthub.data.remote.model.response.DetailUserResponse
+import com.example.kosthub.data.remote.model.user.response.AuthResponse
+import com.example.kosthub.data.remote.model.BaseResponse
+import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
+import com.example.kosthub.data.remote.model.user.response.DetailUserResponse
+import com.example.kosthub.data.remote.model.user.request.*
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -80,5 +81,13 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Body body: UpdateBankAccountRequest
     ): Call<BaseResponse<Unit>>
+
+    //Kost
+    @POST("/v1/kost/add")
+    fun addNewKost(
+        @Header("Authorization") token: String,
+        @Body body: AddKostRequest
+    ): Call<BaseResponse<Unit>>
+
 
 }

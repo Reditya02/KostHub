@@ -1,18 +1,18 @@
-package com.example.kosthub.data.remote.model.request
+package com.example.kosthub.data.remote.model.user.request
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class VerifyOTPRequest(
+data class RegisterRequest(
 
-	@field:SerializedName("code")
-	val code: String,
+	@field:SerializedName("password")
+	val password: String,
 
 	@field:SerializedName("phone")
-	val phone: String? = null,
+	val phone: String,
 
 	@field:SerializedName("email")
-	val email: String? = null
+	val email: String
 ) : Parcelable

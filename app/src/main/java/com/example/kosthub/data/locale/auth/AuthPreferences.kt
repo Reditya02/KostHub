@@ -2,8 +2,8 @@ package com.example.kosthub.data.locale.auth
 
 import android.content.Context
 import com.example.kosthub.data.model.user.UserProfile
-import com.example.kosthub.data.remote.model.response.AuthResponse
-import com.example.kosthub.data.remote.model.response.DetailUserResponse
+import com.example.kosthub.data.remote.model.user.response.AuthResponse
+import com.example.kosthub.data.remote.model.user.response.DetailUserResponse
 import com.google.gson.Gson
 
 class AuthPreferences(context: Context) {

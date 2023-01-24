@@ -3,10 +3,10 @@ package com.example.kosthub.data.repositoy
 import androidx.lifecycle.MutableLiveData
 import com.example.kosthub.data.locale.auth.AuthPreferences
 import com.example.kosthub.data.remote.ApiService
-import com.example.kosthub.data.remote.model.request.*
-import com.example.kosthub.data.remote.model.response.AuthResponse
-import com.example.kosthub.data.remote.model.response.BaseResponse
-import com.example.kosthub.data.remote.model.response.DetailUserResponse
+import com.example.kosthub.data.remote.model.user.response.AuthResponse
+import com.example.kosthub.data.remote.model.BaseResponse
+import com.example.kosthub.data.remote.model.user.response.DetailUserResponse
+import com.example.kosthub.data.remote.model.user.request.*
 import com.example.kosthub.utils.Role
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -17,7 +17,6 @@ import okhttp3.RequestBody.Companion.toRequestBody
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.io.File
 import javax.inject.Inject
 
 class UserRepository @Inject constructor(
