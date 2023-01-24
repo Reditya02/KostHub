@@ -5,7 +5,9 @@ import com.example.kosthub.data.locale.auth.AuthPreferences
 import com.example.kosthub.data.remote.ApiService
 import com.example.kosthub.data.remote.model.BaseResponse
 import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
+import com.example.kosthub.data.remote.model.kostroom.request.SearchRoomRequest
 import com.example.kosthub.data.remote.model.kostroom.response.GetRoomByIdResponse
+import com.example.kosthub.data.remote.model.kostroom.response.SearchRoomResponse
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -26,6 +28,8 @@ class KostRoomRepository @Inject constructor(
         message = "no response",
         status = "error"
     )
+
+    private val noSearchRoomResponse = SearchRoomResponse()
 
     fun addNewKost(data: AddKostRequest): MutableLiveData<BaseResponse<Unit>> {
         val apiResponse = MutableLiveData(noUnitResponse)
@@ -65,6 +69,34 @@ class KostRoomRepository @Inject constructor(
 
             override fun onFailure(call: Call<BaseResponse<Unit>>, t: Throwable) {
                 apiResponse.value = BaseResponse(data = null, message = t.toString(), status = "error")
+            }
+        })
+
+        return apiResponse
+    }
+
+    fun searchRoom(data: SearchRoomRequest): MutableLiveData<SearchRoomResponse> {
+        val apiResponse = MutableLiveData(noSearchRoomResponse)
+        var apiRequest: Call<SearchRoomResponse>
+
+        data.apply {
+            apiRequest = apiService.searchRoom(
+                keyword, label, type, priceMin, priceMax, size
+            )
+        }
+
+        apiRequest.enqueue(object : Callback<SearchRoomResponse> {
+            override fun onResponse(
+                call: Call<SearchRoomResponse>,
+                response: Response<SearchRoomResponse>
+            ) {
+                response.body()?.let {
+                    apiResponse.value = it
+                }
+            }
+
+            override fun onFailure(call: Call<SearchRoomResponse>, t: Throwable) {
+                apiResponse.value = SearchRoomResponse(data = null, message = t.toString(), status = "error")
             }
         })
 

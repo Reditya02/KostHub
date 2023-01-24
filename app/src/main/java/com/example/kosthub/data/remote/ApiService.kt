@@ -1,9 +1,11 @@
 package com.example.kosthub.data.remote
 
+import android.util.Size
 import com.example.kosthub.data.remote.model.user.response.AuthResponse
 import com.example.kosthub.data.remote.model.BaseResponse
 import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
 import com.example.kosthub.data.remote.model.kostroom.response.GetRoomByIdResponse
+import com.example.kosthub.data.remote.model.kostroom.response.SearchRoomResponse
 import com.example.kosthub.data.remote.model.user.response.DetailUserResponse
 import com.example.kosthub.data.remote.model.user.request.*
 import okhttp3.MultipartBody
@@ -16,6 +18,7 @@ import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Part
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
 
@@ -98,6 +101,16 @@ interface ApiService {
     ): Call<BaseResponse<Unit>>
 
     //Room
+    @GET("/v1/search")
+    fun searchRoom(
+        @Query("keyword") keyword: String? = null,
+        @Query("label") label: String? = null,
+        @Query("type") type: String? = null,
+        @Query("price_min") priceMin: Long? = null,
+        @Query("price_max") priceMax: Long? = null,
+        @Query("size") size: Int? = null
+    ): Call<SearchRoomResponse>
+
     @GET("/v1/rooms/{roomId}")
     fun getRoomById(
         @Path("roomId") id: String,
