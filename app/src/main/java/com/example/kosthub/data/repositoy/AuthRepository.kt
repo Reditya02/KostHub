@@ -6,6 +6,7 @@ import com.example.kosthub.data.remote.ApiService
 import com.example.kosthub.data.remote.model.request.*
 import com.example.kosthub.data.remote.model.response.AuthResponse
 import com.example.kosthub.data.remote.model.response.BaseResponse
+import com.example.kosthub.data.remote.model.response.DetailUserResponse
 import com.example.kosthub.utils.Role
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,6 +30,11 @@ class AuthRepository @Inject constructor(
         status = "error"
     )
 
+    private val noDetailUserResponse = BaseResponse(
+        data = DetailUserResponse(),
+        message = "no response",
+        status = "error"
+    )
 
     fun test(): Int {
         return 1
@@ -46,7 +52,10 @@ class AuthRepository @Inject constructor(
                 response.body()?.let {
                     apiResponse.value = it
                     if (it.status == "OK") {
-                        pref.setUser(it.data as AuthResponse)
+                        val token = it.data?.accessToken
+                        if (token != null) {
+                            getDetailUser(token)
+                        }
                     }
                 }
             }
@@ -74,7 +83,10 @@ class AuthRepository @Inject constructor(
                 response.body()?.let {
                     apiResponse.value = it
                     if (it.status == "OK") {
-                        pref.setUser(it.data as AuthResponse)
+                        val token = it.data?.accessToken
+                        if (token != null) {
+                            getDetailUser(token)
+                        }
                     }
                 }
             }
@@ -146,6 +158,32 @@ class AuthRepository @Inject constructor(
             }
 
             override fun onFailure(call: Call<BaseResponse<Unit>>, t: Throwable) {
+                apiResponse.value = BaseResponse(data = null, message = t.toString(), status = "error")
+            }
+        })
+
+        return apiResponse
+    }
+
+    fun getDetailUser(token: String): MutableLiveData<BaseResponse<DetailUserResponse>> {
+        val apiResponse = MutableLiveData(noDetailUserResponse)
+        val apiRequest = apiService.getDetailUser(token)
+
+        apiRequest.enqueue(object : Callback<BaseResponse<DetailUserResponse>> {
+            override fun onResponse(
+                call: Call<BaseResponse<DetailUserResponse>>,
+                response: Response<BaseResponse<DetailUserResponse>>
+            ) {
+                response.body()?.let {
+                    apiResponse.value = it
+                    if (it.status == "OK") {
+                        it.data?.let { it1 -> pref.setUser(it1) }
+                        pref.setToken(token)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<DetailUserResponse>>, t: Throwable) {
                 apiResponse.value = BaseResponse(data = null, message = t.toString(), status = "error")
             }
         })
