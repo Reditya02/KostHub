@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.register.PilihMetodeFragment">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_background_top"
+        android:layout_width="409dp"
+        android:layout_height="400dp"
+        app:cardBackgroundColor="#F0F0F0"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/pilih_metode_verif" />
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_pilihMetodeVerifikasi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Pilih Metode Verifikasi"
+        android:textColor="#171717"
+        android:textSize="23sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/card_background_top" />
+
+    <Button
+        android:id="@+id/btn_whatsapp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="20dp"
+        android:capitalize="words"
+        android:fontFamily="@font/poppins"
+        android:text="WhatsApp"
+        android:textAllCaps="false"
+        android:textColor="#23372B"
+        app:icon="@drawable/icon_wa"
+
+        app:iconGravity="textStart"
+        app:iconTint="#23372B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_pilihMetodeVerifikasi"
+        app:strokeColor="#23372B" />
+
+    <Button
+        android:id="@+id/btn_gmail"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:capitalize="words"
+        android:fontFamily="@font/poppins"
+        android:text="Gmail"
+        android:textAllCaps="false"
+        android:textColor="#23372B"
+
+        app:icon="@drawable/icon_gmail"
+        app:iconGravity="textStart"
+        app:iconTint="#23372B"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_whatsapp"
+        app:strokeColor="#23372B" />
+</androidx.constraintlayout.widget.ConstraintLayout>

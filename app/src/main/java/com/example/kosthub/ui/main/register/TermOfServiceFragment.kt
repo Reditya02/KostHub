@@ -1,4 +1,4 @@
-package com.example.kosthub.ui.main.welcome
+package com.example.kosthub.ui.main.register
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,13 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.kosthub.R
+import com.example.kosthub.databinding.FragmentTermOfServiceBinding
 import com.example.kosthub.databinding.FragmentWelcome3Binding
-import com.example.kosthub.databinding.FragmentWelcomeBinding
+import com.example.kosthub.ui.main.welcome.WelcomeFragmentDirections
+import com.example.kosthub.ui.main.welcome.WelcomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class WelcomeFragment : Fragment() {
-    private var _binding: FragmentWelcome3Binding? = null
+class TermOfServiceFragment : Fragment() {
+
+    private var _binding: FragmentTermOfServiceBinding? = null
     private val binding get() = _binding!!
 
     private val viewModel: WelcomeViewModel by viewModels()
@@ -22,7 +26,7 @@ class WelcomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentWelcome3Binding.inflate(inflater, container, false)
+        _binding = FragmentTermOfServiceBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -31,16 +35,16 @@ class WelcomeFragment : Fragment() {
 
         binding.apply {
 
-            btnLewati.setOnClickListener {
-                val toWelcomeFragment2 = WelcomeFragmentDirections.actionWelcomeFragmentToWelcomeFragment2()
-                findNavController().navigate(toWelcomeFragment2)
+            btnBatal.setOnClickListener {
+                val toRegister = TermOfServiceFragmentDirections.actionTermOfServiceFragmentToRegisterFragment()
+                findNavController().navigate(toRegister)
             }
 
-            btnNext.setOnClickListener{
-                val toWelcomeFragment4 = WelcomeFragmentDirections.actionWelcomeFragmentToWelcomeFragment2()
-                findNavController().navigate(toWelcomeFragment4)
-            }
 
+            btnSetuju.setOnClickListener {
+                val toMetode = TermOfServiceFragmentDirections.actionTermOfServiceFragmentToMetodeFragment()
+                findNavController().navigate(toMetode)
+            }
         }
 
     }
