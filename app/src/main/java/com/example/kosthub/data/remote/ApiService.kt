@@ -117,7 +117,7 @@ interface ApiService {
     @GET("/v1/rooms/{roomId}")
     fun getRoomById(
         @Path("roomId") id: String,
-    ): Call<BaseResponse<GetRoomByIdResponse>>
+    ): Call<BaseResponse<DetailRoomResponse>>
 
     @GET("/v1/rooms/contact/{roomId}")
     fun getOwnerKostById(

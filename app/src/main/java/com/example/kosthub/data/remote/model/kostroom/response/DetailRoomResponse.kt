@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class GetRoomByIdResponse(
+data class DetailRoomResponse(
 
 	@field:SerializedName("another_room")
 	val anotherRoom: List<AnotherRoomItem?>? = null,

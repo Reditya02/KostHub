@@ -24,7 +24,7 @@ class KostRoomRepository @Inject constructor(
     )
 
     private val noRoomByIdResponse = BaseResponse(
-        data = GetRoomByIdResponse(),
+        data = DetailRoomResponse(),
         message = "no response",
         status = "error"
     )
@@ -113,21 +113,21 @@ class KostRoomRepository @Inject constructor(
         return apiResponse
     }
 
-    fun getRoomById(id: String): MutableLiveData<BaseResponse<GetRoomByIdResponse>> {
+    fun getRoomById(id: String): MutableLiveData<BaseResponse<DetailRoomResponse>> {
         val apiResponse = MutableLiveData(noRoomByIdResponse)
         val apiRequest = apiService.getRoomById(id)
 
-        apiRequest.enqueue(object : Callback<BaseResponse<GetRoomByIdResponse>> {
+        apiRequest.enqueue(object : Callback<BaseResponse<DetailRoomResponse>> {
             override fun onResponse(
-                call: Call<BaseResponse<GetRoomByIdResponse>>,
-                response: Response<BaseResponse<GetRoomByIdResponse>>
+                call: Call<BaseResponse<DetailRoomResponse>>,
+                response: Response<BaseResponse<DetailRoomResponse>>
             ) {
                 response.body()?.let {
                     apiResponse.value = it
                 }
             }
 
-            override fun onFailure(call: Call<BaseResponse<GetRoomByIdResponse>>, t: Throwable) {
+            override fun onFailure(call: Call<BaseResponse<DetailRoomResponse>>, t: Throwable) {
                 apiResponse.value = BaseResponse(data = null, message = t.toString(), status = "error")
             }
         })
