@@ -11,12 +11,64 @@
         android:label="fragment_welcome"
         tools:layout="@layout/fragment_welcome" >
         <action
-            android:id="@+id/action_welcomeFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_welcomeFragment_to_welcomeFragment2"
+            app:destination="@id/welcomeFragment2" />
         <action
-            android:id="@+id/action_welcomeFragment_to_registerFragment"
-            app:destination="@id/registerFragment" />
+            android:id="@+id/action_welcomeFragment_to_welcomeFragment4"
+            app:destination="@id/welcomeFragment4" />
     </fragment>
+
+    <fragment
+        android:id="@+id/welcomeFragment2"
+        android:name="com.example.kosthub.ui.main.welcome.Welcome2Fragment"
+        android:label="fragment_welcome2"
+        tools:layout="@layout/fragment_welcome2" >
+
+        <action
+            android:id="@+id/action_welcomeFragment2_to_welcomeFragment3"
+            app:destination="@id/welcomeFragment3" />
+        <action
+            android:id="@+id/action_welcomeFragment2_to_welcomeFragment4"
+            app:destination="@id/welcomeFragment4" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/welcomeFragment3"
+        android:name="com.example.kosthub.ui.main.welcome.Welcome3Fragment"
+        android:label="fragment_welcome3"
+        tools:layout="@layout/fragment_welcome3" >
+
+        <action
+            android:id="@+id/action_welcomeFragment3_to_welcomeFragment4"
+            app:destination="@id/welcomeFragment4" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/welcomeFragment4"
+        android:name="com.example.kosthub.ui.main.welcome.Welcome4Fragment"
+        android:label="fragment_welcome4"
+        tools:layout="@layout/fragment_welcome4" >
+
+        <action
+            android:id="@+id/action_welcomeFragment4_to_pilihRoleFragment"
+            app:destination="@id/pilihRoleFragment" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/pilihRoleFragment"
+        android:name="com.example.kosthub.ui.main.welcome.PilihRoleFragment"
+        android:label="fragment_pilih_role"
+        tools:layout="@layout/fragment_pilih_role" >
+
+        <action
+            android:id="@+id/action_pilihRoleFragment_to_registerFragment"
+            app:destination="@id/registerFragment" />
+
+    </fragment>
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.kosthub.ui.main.login.LoginFragment"
@@ -25,8 +77,13 @@
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
             app:destination="@id/registerFragment"
-            app:popUpTo="@id/welcomeFragment"/>
+          />
+
+        <action
+            android:id="@+id/action_loginFragment_to_pilihRoleFragment"
+            app:destination="@id/pilihRoleFragment"/>
     </fragment>
+
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.example.kosthub.ui.main.register.RegisterFragment"
@@ -34,7 +91,50 @@
         tools:layout="@layout/fragment_register" >
         <action
             android:id="@+id/action_registerFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:popUpTo="@id/welcomeFragment"/>
+            app:destination="@id/loginFragment" />
+
+        <action
+            android:id="@+id/action_registerFragment_to_termOfServiceFragment"
+            app:destination="@id/termOfServiceFragment" />
+        <action
+            android:id="@+id/action_registerFragment_to_pilihRole"
+            app:destination="@id/pilihRoleFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/termOfServiceFragment"
+        android:name="com.example.kosthub.ui.main.register.TermOfServiceFragment"
+        android:label="fragment_term_of_service"
+        tools:layout="@layout/fragment_term_of_service" >
+
+        <action
+            android:id="@+id/action_termOfServiceFragment_to_registerFragment"
+            app:destination="@+id/registerFragment" />
+        <action
+            android:id="@+id/action_termOfServiceFragment_to_metodeFragment"
+            app:destination="@id/pilihMetodeFragment"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/pilihMetodeFragment"
+        android:name="com.example.kosthub.ui.main.register.PilihMetodeFragment"
+        android:label="fragment_pilih_metode"
+        tools:layout="@layout/fragment_pilih_metode" >
+
+        <action
+            android:id="@+id/action_pilihMetodeFragment_to_otpVerificationFragment"
+            app:destination="@id/otpVerificationFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/otpVerificationFragment"
+        android:name="com.example.kosthub.ui.main.register.OtpVerificationFragment"
+        android:label="fragment_otp_verification"
+        tools:layout="@layout/fragment_otp_verification" >
+
+        <action
+            android:id="@+id/action_otpVerificationFragment_to_pilihMetodeFragment"
+            app:destination="@+id/pilihMetodeFragment"/>
+    </fragment>
+
 </navigation>
