@@ -4,6 +4,7 @@ import com.example.kosthub.data.remote.model.user.response.AuthResponse
 import com.example.kosthub.data.remote.model.BaseResponse
 import com.example.kosthub.data.remote.model.BaseResponseMultiData
 import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
+import com.example.kosthub.data.remote.model.kostroom.request.UpdateTransactionRequest
 import com.example.kosthub.data.remote.model.kostroom.response.*
 import com.example.kosthub.data.remote.model.user.response.DetailUserResponse
 import com.example.kosthub.data.remote.model.user.request.*
@@ -15,6 +16,7 @@ import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Part
 import retrofit2.http.Path
 import retrofit2.http.Query
@@ -131,6 +133,13 @@ interface ApiService {
     fun getTransactionOwner(
         @Header("Authorization") token: String
     ): Call<BaseResponseMultiData<TransactionOwnerResponse>>
+
+    @PUT("/v1/transactions/owner/{id}")
+    fun updateTransaction(
+        @Header("Authorization") token: String,
+        @Path("id") id: String,
+        @Body body: UpdateTransactionRequest
+    ): Call<BaseResponse<Unit>>
 
 
 }
