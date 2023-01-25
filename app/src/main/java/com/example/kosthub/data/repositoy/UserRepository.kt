@@ -193,6 +193,10 @@ class UserRepository @Inject constructor(
         return apiResponse
     }
 
+    fun getUserFromLocale(): MutableLiveData<DetailUserResponse> {
+        return MutableLiveData(pref.getUser())
+    }
+
     fun updateBankAccount(data: UpdateBankAccountRequest): MutableLiveData<BaseResponse<Unit>> {
         val apiResponse = MutableLiveData(noUnitResponse)
         val apiRequest = apiService.updateBankAccount(pref.getToken(), data)
