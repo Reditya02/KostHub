@@ -2,4 +2,7 @@
     <string name="app_name">KostHub</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="desc_line1">Sistem pencarian dan pemesanan kost yang aman dan terpecaya bagi kamu pencari maupun pemilik kost! </string>
+    <string name="desc_line2"> </string>
+    <string name="desc_line3"></string>
 </resources>
