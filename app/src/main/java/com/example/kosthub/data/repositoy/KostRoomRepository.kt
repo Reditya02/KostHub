@@ -1,5 +1,6 @@
 package com.example.kosthub.data.repositoy
 
+import android.view.SurfaceControl.Transaction
 import androidx.lifecycle.MutableLiveData
 import com.example.kosthub.data.locale.auth.AuthPreferences
 import com.example.kosthub.data.remote.ApiService
@@ -7,10 +8,7 @@ import com.example.kosthub.data.remote.model.BaseResponse
 import com.example.kosthub.data.remote.model.BaseResponseMultiData
 import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
 import com.example.kosthub.data.remote.model.kostroom.request.SearchRoomRequest
-import com.example.kosthub.data.remote.model.kostroom.response.AllTransactionResponse
-import com.example.kosthub.data.remote.model.kostroom.response.GetRoomByIdResponse
-import com.example.kosthub.data.remote.model.kostroom.response.OwnerKostResponse
-import com.example.kosthub.data.remote.model.kostroom.response.SearchRoomResponse
+import com.example.kosthub.data.remote.model.kostroom.response.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -46,6 +44,12 @@ class KostRoomRepository @Inject constructor(
 
     private val noTransactionResponse = BaseResponseMultiData(
         data = emptyList<AllTransactionResponse>(),
+        message = "no response",
+        status = "error"
+    )
+
+    private val noTransactionOwnerResponse = BaseResponseMultiData(
+        data = emptyList<TransactionOwnerResponse>(),
         message = "no response",
         status = "error"
     )
@@ -185,6 +189,31 @@ class KostRoomRepository @Inject constructor(
                 t: Throwable
             ) {
                 apiResponse.value = BaseResponseMultiData(data = null, message = t.toString(), status = "error")
+            }
+        })
+
+        return apiResponse
+    }
+
+    fun getTransactionOwner(): MutableLiveData<BaseResponseMultiData<TransactionOwnerResponse>> {
+        val apiResponse = MutableLiveData(noTransactionOwnerResponse)
+        val apiRequest = apiService.getTransactionOwner(pref.getToken())
+
+        apiRequest.enqueue(object : Callback<BaseResponseMultiData<TransactionOwnerResponse>> {
+            override fun onResponse(
+                call: Call<BaseResponseMultiData<TransactionOwnerResponse>>,
+                response: Response<BaseResponseMultiData<TransactionOwnerResponse>>
+            ) {
+                response.body()?.let {
+                    apiResponse.value = it
+                }
+            }
+
+            override fun onFailure(
+                call: Call<BaseResponseMultiData<TransactionOwnerResponse>>,
+                t: Throwable
+            ) {
+                TODO("Not yet implemented")
             }
         })
 

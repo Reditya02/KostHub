@@ -4,10 +4,7 @@ import com.example.kosthub.data.remote.model.user.response.AuthResponse
 import com.example.kosthub.data.remote.model.BaseResponse
 import com.example.kosthub.data.remote.model.BaseResponseMultiData
 import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
-import com.example.kosthub.data.remote.model.kostroom.response.AllTransactionResponse
-import com.example.kosthub.data.remote.model.kostroom.response.GetRoomByIdResponse
-import com.example.kosthub.data.remote.model.kostroom.response.OwnerKostResponse
-import com.example.kosthub.data.remote.model.kostroom.response.SearchRoomResponse
+import com.example.kosthub.data.remote.model.kostroom.response.*
 import com.example.kosthub.data.remote.model.user.response.DetailUserResponse
 import com.example.kosthub.data.remote.model.user.request.*
 import okhttp3.MultipartBody
@@ -129,6 +126,11 @@ interface ApiService {
     fun getAlltransaction(
         @Header("Authorization") token: String
     ): Call<BaseResponseMultiData<AllTransactionResponse>>
+
+    @GET("/v1/transactions/owner")
+    fun getTransactionOwner(
+        @Header("Authorization") token: String
+    ): Call<BaseResponseMultiData<TransactionOwnerResponse>>
 
 
 }
