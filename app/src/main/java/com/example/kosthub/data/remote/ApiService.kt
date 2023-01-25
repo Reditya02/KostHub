@@ -4,6 +4,7 @@ import com.example.kosthub.data.remote.model.user.response.AuthResponse
 import com.example.kosthub.data.remote.model.BaseResponse
 import com.example.kosthub.data.remote.model.BaseResponseMultiData
 import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
+import com.example.kosthub.data.remote.model.kostroom.response.AllTransactionResponse
 import com.example.kosthub.data.remote.model.kostroom.response.GetRoomByIdResponse
 import com.example.kosthub.data.remote.model.kostroom.response.OwnerKostResponse
 import com.example.kosthub.data.remote.model.kostroom.response.SearchRoomResponse
@@ -124,7 +125,10 @@ interface ApiService {
     ): Call<BaseResponse<OwnerKostResponse>>
 
     //Transaction
-
+    @GET("/v1/transactions/history")
+    fun getAlltransaction(
+        @Header("Authorization") token: String
+    ): Call<BaseResponseMultiData<AllTransactionResponse>>
 
 
 }

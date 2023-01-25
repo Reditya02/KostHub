@@ -7,6 +7,7 @@ import com.example.kosthub.data.remote.model.BaseResponse
 import com.example.kosthub.data.remote.model.BaseResponseMultiData
 import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
 import com.example.kosthub.data.remote.model.kostroom.request.SearchRoomRequest
+import com.example.kosthub.data.remote.model.kostroom.response.AllTransactionResponse
 import com.example.kosthub.data.remote.model.kostroom.response.GetRoomByIdResponse
 import com.example.kosthub.data.remote.model.kostroom.response.OwnerKostResponse
 import com.example.kosthub.data.remote.model.kostroom.response.SearchRoomResponse
@@ -37,9 +38,14 @@ class KostRoomRepository @Inject constructor(
         status = "error"
     )
 
-
     private val noSearchRoomResponse = BaseResponseMultiData(
         data = emptyList<SearchRoomResponse>(),
+        message = "no response",
+        status = "error"
+    )
+
+    private val noTransactionResponse = BaseResponseMultiData(
+        data = emptyList<AllTransactionResponse>(),
         message = "no response",
         status = "error"
     )
@@ -154,6 +160,31 @@ class KostRoomRepository @Inject constructor(
 
             override fun onFailure(call: Call<BaseResponse<OwnerKostResponse>>, t: Throwable) {
                 apiResponse.value = BaseResponse(data = null, message = t.toString(), status = "error")
+            }
+        })
+
+        return apiResponse
+    }
+
+    fun getAllTransaction(): MutableLiveData<BaseResponseMultiData<AllTransactionResponse>> {
+        val apiResponse = MutableLiveData(noTransactionResponse)
+        val apiRequest = apiService.getAlltransaction(pref.getToken())
+
+        apiRequest.enqueue(object : Callback<BaseResponseMultiData<AllTransactionResponse>> {
+            override fun onResponse(
+                call: Call<BaseResponseMultiData<AllTransactionResponse>>,
+                response: Response<BaseResponseMultiData<AllTransactionResponse>>
+            ) {
+                response.body()?.let {
+                    apiResponse.value = it
+                }
+            }
+
+            override fun onFailure(
+                call: Call<BaseResponseMultiData<AllTransactionResponse>>,
+                t: Throwable
+            ) {
+                apiResponse.value = BaseResponseMultiData(data = null, message = t.toString(), status = "error")
             }
         })
 
