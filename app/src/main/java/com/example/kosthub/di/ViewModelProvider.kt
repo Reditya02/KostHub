@@ -1,7 +1,9 @@
 package com.example.kosthub.di
 
 import com.example.kosthub.data.locale.auth.AuthPreferences
+import com.example.kosthub.data.locale.bookmark.BookmarkDao
 import com.example.kosthub.data.remote.ApiService
+import com.example.kosthub.data.repositoy.BookmarkRepository
 import com.example.kosthub.data.repositoy.KostRoomRepository
 import com.example.kosthub.data.repositoy.TransactionRepository
 import com.example.kosthub.data.repositoy.UserRepository
@@ -25,4 +27,8 @@ object ViewModelProvider {
     @Provides
     @Singleton
     fun provideTransactionRepository(apiService: ApiService, preferences: AuthPreferences) = TransactionRepository(apiService, preferences)
+
+    @Provides
+    @Singleton
+    fun providesBookmarkRepository(apiService: ApiService, bookmarkDao: BookmarkDao, preferences: AuthPreferences) = BookmarkRepository(apiService, bookmarkDao, preferences)
 }
