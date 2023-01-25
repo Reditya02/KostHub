@@ -4,6 +4,7 @@ import com.example.kosthub.data.remote.model.user.response.AuthResponse
 import com.example.kosthub.data.remote.model.BaseResponse
 import com.example.kosthub.data.remote.model.BaseResponseMultiData
 import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
+import com.example.kosthub.data.remote.model.kostroom.request.BookingRequest
 import com.example.kosthub.data.remote.model.kostroom.request.UpdateTransactionRequest
 import com.example.kosthub.data.remote.model.kostroom.response.*
 import com.example.kosthub.data.remote.model.user.response.DetailUserResponse
@@ -139,6 +140,12 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Path("id") id: String,
         @Body body: UpdateTransactionRequest
+    ): Call<BaseResponse<Unit>>
+
+    @POST("/v1/transactions/booking")
+    fun bookingRoom(
+        @Header("Authorization") token: String,
+        @Body body: BookingRequest
     ): Call<BaseResponse<Unit>>
 
 

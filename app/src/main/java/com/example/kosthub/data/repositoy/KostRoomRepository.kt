@@ -7,6 +7,7 @@ import com.example.kosthub.data.remote.ApiService
 import com.example.kosthub.data.remote.model.BaseResponse
 import com.example.kosthub.data.remote.model.BaseResponseMultiData
 import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
+import com.example.kosthub.data.remote.model.kostroom.request.BookingRequest
 import com.example.kosthub.data.remote.model.kostroom.request.SearchRoomRequest
 import com.example.kosthub.data.remote.model.kostroom.request.UpdateTransactionRequest
 import com.example.kosthub.data.remote.model.kostroom.response.*
@@ -238,6 +239,28 @@ class KostRoomRepository @Inject constructor(
             override fun onFailure(call: Call<BaseResponse<Unit>>, t: Throwable) {
                 apiResponse.value = BaseResponse(data = null, message = t.toString(), status = "error")
 
+            }
+        })
+
+        return apiResponse
+    }
+
+    fun bookingRoom(data: BookingRequest): MutableLiveData<BaseResponse<Unit>> {
+        val apiResponse = MutableLiveData(noUnitResponse)
+        val apiRequest = apiService.bookingRoom(pref.getToken(), data)
+
+        apiRequest.enqueue(object : Callback<BaseResponse<Unit>> {
+            override fun onResponse(
+                call: Call<BaseResponse<Unit>>,
+                response: Response<BaseResponse<Unit>>
+            ) {
+                response.body()?.let {
+                    apiResponse.value = it
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<Unit>>, t: Throwable) {
+                apiResponse.value = BaseResponse(data = null, message = t.toString(), status = "error")
             }
         })
 
