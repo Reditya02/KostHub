@@ -24,9 +24,15 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnRegister.setOnClickListener {
-            val toRegister = LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
-            findNavController().navigate(toRegister)
+        binding.apply {
+            tvBelumPunyaAkun.setOnClickListener{
+                val toRegister = LoginFragmentDirections.actionLoginFragmentToRegisterFragment()
+                findNavController().navigate(toRegister)
+            }
+            btnBack.setOnClickListener {
+                val toPilihRole = LoginFragmentDirections.actionLoginFragmentToPilihRoleFragment()
+                findNavController().navigate(toPilihRole)
+            }
         }
     }
 
