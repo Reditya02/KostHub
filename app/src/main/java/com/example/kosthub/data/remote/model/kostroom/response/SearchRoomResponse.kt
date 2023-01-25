@@ -7,19 +7,6 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class SearchRoomResponse(
 
-	@field:SerializedName("data")
-	val data: List<DataItem?>? = null,
-
-	@field:SerializedName("message")
-	val message: String? = null,
-
-	@field:SerializedName("status")
-	val status: String? = null
-) : Parcelable
-
-@Parcelize
-data class DataItem(
-
 	@field:SerializedName("thumbnail")
 	val thumbnail: String? = null,
 

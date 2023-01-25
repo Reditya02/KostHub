@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.kosthub.data.locale.auth.AuthPreferences
 import com.example.kosthub.data.remote.ApiService
 import com.example.kosthub.data.remote.model.BaseResponse
+import com.example.kosthub.data.remote.model.BaseResponseMultiData
 import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
 import com.example.kosthub.data.remote.model.kostroom.request.SearchRoomRequest
 import com.example.kosthub.data.remote.model.kostroom.response.GetRoomByIdResponse
@@ -37,7 +38,11 @@ class KostRoomRepository @Inject constructor(
     )
 
 
-    private val noSearchRoomResponse = SearchRoomResponse()
+    private val noSearchRoomResponse = BaseResponseMultiData(
+        data = emptyList<SearchRoomResponse>(),
+        message = "no response",
+        status = "error"
+    )
 
     fun addNewKost(data: AddKostRequest): MutableLiveData<BaseResponse<Unit>> {
         val apiResponse = MutableLiveData(noUnitResponse)
@@ -83,9 +88,9 @@ class KostRoomRepository @Inject constructor(
         return apiResponse
     }
 
-    fun searchRoom(data: SearchRoomRequest): MutableLiveData<SearchRoomResponse> {
+    fun searchRoom(data: SearchRoomRequest): MutableLiveData<BaseResponseMultiData<SearchRoomResponse>> {
         val apiResponse = MutableLiveData(noSearchRoomResponse)
-        var apiRequest: Call<SearchRoomResponse>
+        var apiRequest: Call<BaseResponseMultiData<SearchRoomResponse>>
 
         data.apply {
             apiRequest = apiService.searchRoom(
@@ -93,18 +98,18 @@ class KostRoomRepository @Inject constructor(
             )
         }
 
-        apiRequest.enqueue(object : Callback<SearchRoomResponse> {
+        apiRequest.enqueue(object : Callback<BaseResponseMultiData<SearchRoomResponse>> {
             override fun onResponse(
-                call: Call<SearchRoomResponse>,
-                response: Response<SearchRoomResponse>
+                call: Call<BaseResponseMultiData<SearchRoomResponse>>,
+                response: Response<BaseResponseMultiData<SearchRoomResponse>>
             ) {
                 response.body()?.let {
                     apiResponse.value = it
                 }
             }
 
-            override fun onFailure(call: Call<SearchRoomResponse>, t: Throwable) {
-                apiResponse.value = SearchRoomResponse(data = null, message = t.toString(), status = "error")
+            override fun onFailure(call: Call<BaseResponseMultiData<SearchRoomResponse>>, t: Throwable) {
+                apiResponse.value = BaseResponseMultiData(data = null, message = t.toString(), status = "error")
             }
         })
 

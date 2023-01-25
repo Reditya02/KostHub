@@ -2,6 +2,7 @@ package com.example.kosthub.data.remote
 
 import com.example.kosthub.data.remote.model.user.response.AuthResponse
 import com.example.kosthub.data.remote.model.BaseResponse
+import com.example.kosthub.data.remote.model.BaseResponseMultiData
 import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
 import com.example.kosthub.data.remote.model.kostroom.response.GetRoomByIdResponse
 import com.example.kosthub.data.remote.model.kostroom.response.OwnerKostResponse
@@ -110,7 +111,7 @@ interface ApiService {
         @Query("price_min") priceMin: Long? = null,
         @Query("price_max") priceMax: Long? = null,
         @Query("size") size: Int? = null
-    ): Call<SearchRoomResponse>
+    ): Call<BaseResponseMultiData<SearchRoomResponse>>
 
     @GET("/v1/rooms/{roomId}")
     fun getRoomById(
@@ -121,6 +122,9 @@ interface ApiService {
     fun getOwnerKostById(
         @Path("roomId") id: String
     ): Call<BaseResponse<OwnerKostResponse>>
+
+    //Transaction
+
 
 
 }
