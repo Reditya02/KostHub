@@ -3,6 +3,7 @@ package com.example.kosthub.di
 import android.content.Context
 import com.example.kosthub.BuildConfig
 import com.example.kosthub.data.locale.auth.AuthPreferences
+import com.example.kosthub.data.locale.bookmark.BookmarkDatabase
 import com.example.kosthub.data.remote.ApiService
 import com.example.kosthub.utils.Const
 import dagger.Module
@@ -51,5 +52,13 @@ object RepositoryProvider {
     @Provides
     @Singleton
     fun provideAuthPreferences(@ApplicationContext context: Context) = AuthPreferences(context)
+
+    @Provides
+    @Singleton
+    fun providesBookmarkRoom(bookmarkDatabase: BookmarkDatabase) = bookmarkDatabase.bookmarkDao()
+
+    @Provides
+    @Singleton
+    fun providesDao(@ApplicationContext context: Context) = BookmarkDatabase.getDatabase(context)
 
 }
