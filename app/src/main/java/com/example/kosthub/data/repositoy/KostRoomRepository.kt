@@ -6,6 +6,7 @@ import com.example.kosthub.data.remote.ApiService
 import com.example.kosthub.data.remote.model.BaseResponse
 import com.example.kosthub.data.remote.model.BaseResponseMultiData
 import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
+import com.example.kosthub.data.remote.model.kostroom.request.AddRoomRequest
 import com.example.kosthub.data.remote.model.kostroom.request.SearchRoomRequest
 import com.example.kosthub.data.remote.model.kostroom.response.*
 import retrofit2.Call
@@ -157,5 +158,25 @@ class KostRoomRepository @Inject constructor(
         return apiResponse
     }
 
+    fun addRoom(data: AddRoomRequest): MutableLiveData<BaseResponse<Unit>> {
+        val apiResponse = MutableLiveData(noUnitResponse)
+        val apiRequest = apiService.addRoom(pref.getToken(), data)
 
+        apiRequest.enqueue(object : Callback<BaseResponse<Unit>> {
+            override fun onResponse(
+                call: Call<BaseResponse<Unit>>,
+                response: Response<BaseResponse<Unit>>
+            ) {
+                response.body()?.let {
+                    apiResponse.value = it
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<Unit>>, t: Throwable) {
+                apiResponse.value = BaseResponse(data = null, message = t.toString(), status = "error")
+            }
+        })
+
+        return apiResponse
+    }
 }

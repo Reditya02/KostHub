@@ -4,6 +4,7 @@ import com.example.kosthub.data.remote.model.user.response.AuthResponse
 import com.example.kosthub.data.remote.model.BaseResponse
 import com.example.kosthub.data.remote.model.BaseResponseMultiData
 import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
+import com.example.kosthub.data.remote.model.kostroom.request.AddRoomRequest
 import com.example.kosthub.data.remote.model.kostroom.request.BookingRequest
 import com.example.kosthub.data.remote.model.kostroom.request.UpdateTransactionRequest
 import com.example.kosthub.data.remote.model.kostroom.response.*
@@ -118,6 +119,12 @@ interface ApiService {
     fun getRoomById(
         @Path("roomId") id: String,
     ): Call<BaseResponse<DetailRoomResponse>>
+
+    @POST("/v1/rooms/add")
+    fun addRoom(
+        @Header("Authorization") token: String,
+        @Body body: AddRoomRequest
+    ): Call<BaseResponse<Unit>>
 
     @GET("/v1/rooms/contact/{roomId}")
     fun getOwnerKostById(
