@@ -24,10 +24,21 @@ class RegisterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnLogin.setOnClickListener {
+        binding.tvSudahPunyaAkun.setOnClickListener {
             val toLogin = RegisterFragmentDirections.actionRegisterFragmentToLoginFragment()
             findNavController().navigate(toLogin)
         }
+
+        binding.btnDaftar.setOnClickListener {
+            val toTOS = RegisterFragmentDirections.actionRegisterFragmentToTermOfServiceFragment()
+            findNavController().navigate(toTOS)
+        }
+
+        binding.btnBack.setOnClickListener{
+            val toPilihRole = RegisterFragmentDirections.actionRegisterFragmentToPilihRole()
+            findNavController().navigate(toPilihRole)
+        }
+
     }
 
     override fun onDestroy() {
