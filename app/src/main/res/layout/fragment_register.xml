@@ -66,13 +66,14 @@
         app:boxCornerRadiusBottomEnd="8dp"
         app:boxCornerRadiusTopEnd="8dp"
         app:boxCornerRadiusBottomStart="8dp"
-        app:textColorHint="#9F9F9F">
+       >
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textEmailAddress"
-            android:fontFamily="@font/poppins">
+            android:fontFamily="@font/poppins"
+            android:textColorHint="#9F9F9F">
         </com.google.android.material.textfield.TextInputEditText>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -95,14 +96,15 @@
         app:boxCornerRadiusBottomEnd="8dp"
         app:boxCornerRadiusTopEnd="8dp"
         app:boxCornerRadiusBottomStart="8dp"
-        app:textColorHint="#9F9F9F">
+        >
 
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="number"
-            android:fontFamily="@font/poppins">
+            android:fontFamily="@font/poppins"
+            android:textColorHint="#9F9F9F">
         </com.google.android.material.textfield.TextInputEditText>
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -127,7 +129,7 @@
         app:boxCornerRadiusBottomStart="8dp"
         app:boxCornerRadiusTopStart="8dp"
         app:passwordToggleEnabled="true"
-        app:textColorHint="#9F9F9F"
+
 
         >
 
@@ -135,7 +137,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textPassword"
-            android:fontFamily="@font/poppins">
+            android:fontFamily="@font/poppins"
+            android:textColorHint="#9F9F9F">
         </com.google.android.material.textfield.TextInputEditText>
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -158,13 +161,14 @@
         app:boxCornerRadiusBottomStart="8dp"
         app:boxCornerRadiusTopStart="8dp"
         app:passwordToggleEnabled="true"
-        app:textColorHint="#9F9F9F">
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:inputType="textPassword"
-            android:fontFamily="@font/poppins">
+            android:fontFamily="@font/poppins"
+            android:textColorHint="#9F9F9F">
         </com.google.android.material.textfield.TextInputEditText>
 
     </com.google.android.material.textfield.TextInputLayout>

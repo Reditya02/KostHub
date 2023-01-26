@@ -65,13 +65,16 @@
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_telahMengirimOTP"
-        app:textColorHint="#9F9F9F">
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/poppins"
-            android:inputType="number"></com.google.android.material.textfield.TextInputEditText>
+            android:inputType="number"
+            android:textColorHint="#9F9F9F">
+
+        </com.google.android.material.textfield.TextInputEditText>
 
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -92,13 +95,14 @@
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintStart_toEndOf="@+id/fieldOtp1"
         app:layout_constraintTop_toBottomOf="@+id/tv_telahMengirimOTP"
-        app:textColorHint="#9F9F9F">
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/poppins"
-            android:inputType="number">
+            android:inputType="number"
+            android:textColorHint="#9F9F9F">
 
         </com.google.android.material.textfield.TextInputEditText>
 
@@ -119,13 +123,14 @@
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintStart_toEndOf="@+id/fieldOtp2"
         app:layout_constraintTop_toBottomOf="@+id/tv_telahMengirimOTP"
-        app:textColorHint="#9F9F9F">
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/poppins"
-            android:inputType="number">
+            android:inputType="number"
+            android:textColorHint="#9F9F9F">
 
         </com.google.android.material.textfield.TextInputEditText>
 
@@ -146,13 +151,14 @@
         app:boxStrokeWidthFocused="0dp"
         app:layout_constraintStart_toEndOf="@+id/fieldOtp3"
         app:layout_constraintTop_toBottomOf="@+id/tv_telahMengirimOTP"
-        app:textColorHint="#9F9F9F">
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fontFamily="@font/poppins"
-            android:inputType="number">
+            android:inputType="number"
+            android:textColorHint="#9F9F9F">
 
         </com.google.android.material.textfield.TextInputEditText>
 
