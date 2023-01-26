@@ -13,7 +13,6 @@ import java.util.concurrent.Executors
 import javax.inject.Inject
 
 class BookmarkRepository @Inject constructor(
-    private val apiService: ApiService,
     private val bookmarkDao: BookmarkDao,
     private val pref: AuthPreferences
 ) {
@@ -32,7 +31,7 @@ class BookmarkRepository @Inject constructor(
         )
     }
 
-    suspend fun saveRoom(room: RoomData) = executorService.execute {
+    fun saveRoom(room: RoomData) = executorService.execute {
         val roomCard = Gson().toJson(room.roomCard)
         val roomDetail = Gson().toJson(room.roomDetail)
         val data = BookmarkRoom(
@@ -41,5 +40,16 @@ class BookmarkRepository @Inject constructor(
             roomDetail = roomDetail
         )
         bookmarkDao.saveBookmark(data)
+    }
+
+    fun deleteRoom(room: RoomData) = executorService.execute {
+        val roomCard = Gson().toJson(room.roomCard)
+        val roomDetail = Gson().toJson(room.roomDetail)
+        val data = BookmarkRoom(
+            email = pref.getUser().email ?: "",
+            roomCard = roomCard,
+            roomDetail = roomDetail
+        )
+        bookmarkDao.deleteBookmark(data)
     }
 }

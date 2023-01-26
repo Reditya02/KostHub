@@ -30,5 +30,5 @@ object ViewModelProvider {
 
     @Provides
     @Singleton
-    fun providesBookmarkRepository(apiService: ApiService, bookmarkDao: BookmarkDao, preferences: AuthPreferences) = BookmarkRepository(apiService, bookmarkDao, preferences)
+    fun providesBookmarkRepository(bookmarkDao: BookmarkDao, preferences: AuthPreferences) = BookmarkRepository(bookmarkDao, preferences)
 }

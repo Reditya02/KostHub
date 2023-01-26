@@ -1,15 +1,15 @@
 package com.example.kosthub.data.locale.bookmark
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface BookmarkDao {
     @Query("select * from rooms where email like :email")
-    fun getAllRoom(email: String): List<BookmarkRoom>
+    suspend fun getAllRoom(email: String): List<BookmarkRoom>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun saveBookmark(room: BookmarkRoom)
+
+    @Delete
+    fun deleteBookmark(room: BookmarkRoom)
 }
