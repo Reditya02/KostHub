@@ -160,7 +160,7 @@
 
 
     <Button
-        android:id="@+id/btn_next"
+        android:id="@+id/btn_verifikasi"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -174,10 +174,10 @@
         app:cornerRadius="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_kirimUlangOtp" />
 
     <Button
-        android:id="@+id/btn_lewati"
+        android:id="@+id/btn_ganti_metode"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -189,15 +189,15 @@
         android:textAllCaps="false"
         android:textColor="#454848"
         app:cornerRadius="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/btn_next"
+        app:layout_constraintEnd_toEndOf="@+id/btn_verifikasi"
         app:layout_constraintHorizontal_bias="0.458"
-        app:layout_constraintStart_toStartOf="@+id/btn_next"
-        app:layout_constraintTop_toBottomOf="@+id/btn_next"
+        app:layout_constraintStart_toStartOf="@+id/btn_verifikasi"
+        app:layout_constraintTop_toBottomOf="@+id/btn_verifikasi"
         app:strokeColor="#23372B"
         app:strokeWidth="1dp" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tv_kirimUlangOtp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
