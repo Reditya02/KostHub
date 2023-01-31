@@ -46,7 +46,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_title_pilih_role" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_penyewa"
+        android:id="@+id/card_pencari"
         android:layout_width="0dp"
         android:layout_height="120dp"
         android:layout_marginStart="20dp"
@@ -74,11 +74,11 @@
             android:layout_marginStart="170dp"
             android:layout_marginTop="51dp"
             android:fontFamily="@font/poppins"
-            android:text="Penyewa" />
+            android:text="Pencari" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/card_pencari"
+        android:id="@+id/card_pemilik"
         android:layout_width="0dp"
         android:layout_height="120dp"
         android:layout_marginStart="20dp"
@@ -90,7 +90,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/card_penyewa" >
+        app:layout_constraintTop_toBottomOf="@+id/card_pencari" >
 
         <ImageView
             android:id="@+id/icon_pemilik"
@@ -119,8 +119,8 @@
         android:inputType="textCapCharacters"
         android:text="Pilih"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/card_pencari"
+        app:layout_constraintEnd_toEndOf="@+id/card_pemilik"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="@+id/card_pencari" />
+        app:layout_constraintStart_toStartOf="@+id/card_pemilik" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

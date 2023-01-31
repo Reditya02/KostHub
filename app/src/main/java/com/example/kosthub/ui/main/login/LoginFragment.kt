@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.kosthub.R
 import com.example.kosthub.databinding.FragmentLoginBinding
+import com.example.kosthub.utils.Const
+import com.example.kosthub.utils.Role
 
 class LoginFragment : Fragment() {
     private var _binding: FragmentLoginBinding? = null
@@ -32,6 +34,12 @@ class LoginFragment : Fragment() {
             btnBack.setOnClickListener {
                 val toPilihRole = LoginFragmentDirections.actionLoginFragmentToPilihRoleFragment()
                 findNavController().navigate(toPilihRole)
+            }
+            btnMasuk.setOnClickListener {
+                if (Const.loginType == Role.pemilik) {
+                    val toPemilikHome = LoginFragmentDirections.actionLoginFragmentToPemilikHomeFragment()
+                    findNavController().navigate(toPemilikHome)
+                }
             }
         }
     }

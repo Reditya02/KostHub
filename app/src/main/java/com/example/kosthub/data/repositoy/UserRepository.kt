@@ -75,7 +75,7 @@ class UserRepository @Inject constructor(
             if (role == Role.pencari)
                 apiService.registerPencari(data)
             else
-                apiService.registerPenyewa(data)
+                apiService.registerPemilik(data)
 
         apiRequest.enqueue(object : Callback<BaseResponse<AuthResponse>> {
             override fun onResponse(

@@ -82,6 +82,9 @@
         <action
             android:id="@+id/action_loginFragment_to_pilihRoleFragment"
             app:destination="@id/pilihRoleFragment"/>
+        <action
+            android:id="@+id/action_loginFragment_to_pemilikHomeFragment"
+            app:destination="@id/pemilikHomeFragment" />
     </fragment>
 
     <fragment
@@ -136,5 +139,10 @@
             android:id="@+id/action_otpVerificationFragment_to_pilihMetodeFragment"
             app:destination="@+id/pilihMetodeFragment"/>
     </fragment>
+    <fragment
+        android:id="@+id/pemilikHomeFragment"
+        android:name="com.example.kosthub.ui.pemilik.PemilikHomeFragment"
+        android:label="fragment_pemilik_home"
+        tools:layout="@layout/fragment_pemilik_home" />
 
 </navigation>

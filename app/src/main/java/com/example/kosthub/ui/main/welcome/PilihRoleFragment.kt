@@ -10,6 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.kosthub.R
 import com.example.kosthub.databinding.FragmentPilihRoleBinding
 import com.example.kosthub.databinding.FragmentWelcome3Binding
+import com.example.kosthub.utils.Const
+import com.example.kosthub.utils.Role
+import com.example.kosthub.utils.Role.*
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -31,6 +34,24 @@ class PilihRoleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.apply {
+
+            cardPemilik.setOnClickListener {
+                cardPemilik.setCardBackgroundColor(requireContext().getColor(R.color.colorPrimary))
+                cardPencari.setCardBackgroundColor(requireContext().getColor(R.color.greyDisable))
+
+                btnPilih.setBackgroundColor(requireContext().getColor(R.color.colorPrimary))
+
+                Const.loginType = pemilik
+            }
+
+            cardPencari.setOnClickListener {
+                cardPencari.setCardBackgroundColor(requireContext().getColor(R.color.colorPrimary))
+                cardPemilik.setCardBackgroundColor(requireContext().getColor(R.color.greyDisable))
+
+                btnPilih.setBackgroundColor(requireContext().getColor(R.color.colorPrimary))
+
+                Const.loginType = pencari
+            }
 
             btnPilih.setOnClickListener {
                 val toRegister = PilihRoleFragmentDirections.actionPilihRoleFragmentToRegisterFragment()

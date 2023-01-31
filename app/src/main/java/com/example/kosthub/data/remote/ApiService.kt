@@ -32,7 +32,7 @@ interface ApiService {
     ): Call<BaseResponse<AuthResponse>>
 
     @POST("/v1/auth/penyewa/register")
-    fun registerPenyewa(
+    fun registerPemilik(
         @Body body: RegisterRequest
     ): Call<BaseResponse<AuthResponse>>
 
