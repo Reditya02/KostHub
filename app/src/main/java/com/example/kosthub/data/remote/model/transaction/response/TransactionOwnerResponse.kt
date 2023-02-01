@@ -1,4 +1,4 @@
-package com.example.kosthub.data.remote.model.kostroom.response
+package com.example.kosthub.data.remote.model.transaction.response
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

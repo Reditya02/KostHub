@@ -14,5 +14,8 @@ data class BaseResponseMultiData<T>(
     val message: String,
 
     @field:SerializedName("status")
-    val status: String
+    val status: String,
+
+    @field:SerializedName("error")
+    val error: String? = null
 ) : Parcelable

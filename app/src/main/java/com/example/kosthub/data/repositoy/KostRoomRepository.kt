@@ -6,6 +6,7 @@ import com.example.kosthub.data.remote.ApiService
 import com.example.kosthub.data.remote.model.BaseResponse
 import com.example.kosthub.data.remote.model.BaseResponseMultiData
 import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
+import com.example.kosthub.data.remote.model.kostroom.request.AddRatingRequest
 import com.example.kosthub.data.remote.model.kostroom.request.AddRoomRequest
 import com.example.kosthub.data.remote.model.kostroom.request.SearchRoomRequest
 import com.example.kosthub.data.remote.model.kostroom.response.*
@@ -161,6 +162,58 @@ class KostRoomRepository @Inject constructor(
     fun addRoom(data: AddRoomRequest): MutableLiveData<BaseResponse<Unit>> {
         val apiResponse = MutableLiveData(noUnitResponse)
         val apiRequest = apiService.addRoom(pref.getToken(), data)
+
+        apiRequest.enqueue(object : Callback<BaseResponse<Unit>> {
+            override fun onResponse(
+                call: Call<BaseResponse<Unit>>,
+                response: Response<BaseResponse<Unit>>
+            ) {
+                response.body()?.let {
+                    apiResponse.value = it
+                }
+            }
+
+            override fun onFailure(call: Call<BaseResponse<Unit>>, t: Throwable) {
+                apiResponse.value = BaseResponse(data = null, message = t.toString(), status = "error")
+            }
+        })
+
+        return apiResponse
+    }
+
+    fun getAllKost(): MutableLiveData<BaseResponseMultiData<AllKostResponse>> {
+        val apiResponse = MutableLiveData(BaseResponseMultiData(
+            data = emptyList<AllKostResponse>(),
+            message = "no response",
+            status = "error"
+        ))
+
+        val apiRequest = apiService.getAllKost(pref.getToken())
+
+        apiRequest.enqueue(object : Callback<BaseResponseMultiData<AllKostResponse>> {
+            override fun onResponse(
+                call: Call<BaseResponseMultiData<AllKostResponse>>,
+                response: Response<BaseResponseMultiData<AllKostResponse>>
+            ) {
+                response.body()?.let {
+                    apiResponse.value = it
+                }
+            }
+
+            override fun onFailure(
+                call: Call<BaseResponseMultiData<AllKostResponse>>,
+                t: Throwable
+            ) {
+                apiResponse.value = BaseResponseMultiData(data = null, message = t.toString(), status = "error")
+            }
+        })
+
+        return apiResponse
+    }
+
+    fun addRating(data: AddRatingRequest): MutableLiveData<BaseResponse<Unit>> {
+        val apiResponse = MutableLiveData(noUnitResponse)
+        val apiRequest = apiService.addRating(pref.getToken(), data)
 
         apiRequest.enqueue(object : Callback<BaseResponse<Unit>> {
             override fun onResponse(

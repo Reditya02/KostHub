@@ -3,11 +3,12 @@ package com.example.kosthub.data.remote
 import com.example.kosthub.data.remote.model.user.response.AuthResponse
 import com.example.kosthub.data.remote.model.BaseResponse
 import com.example.kosthub.data.remote.model.BaseResponseMultiData
-import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
-import com.example.kosthub.data.remote.model.kostroom.request.AddRoomRequest
-import com.example.kosthub.data.remote.model.kostroom.request.BookingRequest
-import com.example.kosthub.data.remote.model.kostroom.request.UpdateTransactionRequest
+import com.example.kosthub.data.remote.model.kostroom.request.*
 import com.example.kosthub.data.remote.model.kostroom.response.*
+import com.example.kosthub.data.remote.model.transaction.response.AllTransactionResponse
+import com.example.kosthub.data.remote.model.transaction.response.TransactionByIdResponse
+import com.example.kosthub.data.remote.model.transaction.response.TransactionOwnerResponse
+import com.example.kosthub.data.remote.model.transaction.request.UpdateTransactionRequest
 import com.example.kosthub.data.remote.model.user.response.DetailUserResponse
 import com.example.kosthub.data.remote.model.user.request.*
 import okhttp3.MultipartBody
@@ -103,7 +104,11 @@ interface ApiService {
         @Body body: AddKostRequest
     ): Call<BaseResponse<Unit>>
 
-    //TODO: Pengajuan kamar dan addroom
+    @GET
+    fun getAllKost(
+        @Header("Authorization") token: String,
+    ): Call<BaseResponseMultiData<AllKostResponse>>
+
     //Room
     @GET("/v1/search")
     fun searchRoom(
@@ -131,6 +136,18 @@ interface ApiService {
         @Path("roomId") id: String
     ): Call<BaseResponse<OwnerKostResponse>>
 
+    @POST("/v1/rooms/rating")
+    fun addRating(
+        @Header("Authorization") token: String,
+        @Body body: AddRatingRequest
+    ): Call<BaseResponse<Unit>>
+
+    //TODO: undone
+    @GET("/v1/rooms/rating/{id}")
+    fun getRating(
+        @Path("id") id: String,
+    )
+
     //Transaction
     @GET("/v1/transactions/history")
     fun getAlltransaction(
@@ -154,6 +171,26 @@ interface ApiService {
         @Header("Authorization") token: String,
         @Body body: BookingRequest
     ): Call<BaseResponse<Unit>>
+
+    @POST("/v1/transactions/payment")
+    fun uploadPaymentProof(
+        @Header("Authorization") token: String,
+        @Part photo: MultipartBody.Part,
+        @Part("id") id: RequestBody
+    ): Call<BaseResponse<Unit>>
+
+    @GET("/v1/transactions/history/{id}")
+    fun getTransactionById(
+        @Header("Authorization") token: String,
+        @Path("id") id: String
+    ): Call<BaseResponseMultiData<TransactionByIdResponse>>
+
+    //Statistic
+    //TODO: undone
+    @GET("/v1/statistic")
+    fun getStatistic(
+        @Header("Authorization") token: String,
+    )
 
 
 }
