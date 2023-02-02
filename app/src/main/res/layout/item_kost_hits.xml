@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_listKos"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+
+        <ImageView
+            android:id="@+id/iv_coverKos"
+            android:layout_width="76dp"
+            android:layout_height="106dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tv_jenisKelamin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="96dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/rounded_textview_white_background"
+            android:fontFamily="@font/poppins"
+            android:text="TextView"
+            android:textColor="#454848"
+            android:textSize="9sp" />
+
+        <TextView
+            android:id="@+id/tv_kategoriKos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="144dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/rounded_textview_white_background"
+            android:fontFamily="@font/poppins"
+            android:text="TextView"
+            android:textColor="#454848"
+            android:textSize="9sp" />
+
+        <TextView
+            android:id="@+id/tv_superkost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="195dp"
+            android:layout_marginTop="13dp"
+            android:background="@drawable/rounded_textview_color_background"
+            android:fontFamily="@font/poppins"
+            android:text="TextView"
+            android:textColor="@color/white"
+            android:textSize="9sp" />
+
+        <TextView
+            android:id="@+id/tv_namaKos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="96dp"
+            android:layout_marginTop="39dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Nama Kos"
+            android:textColor="#171717" />
+
+        <ImageView
+            android:id="@+id/imageView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="96dp"
+            android:layout_marginTop="64dp"
+            app:srcCompat="@drawable/icon_location" />
+
+        <TextView
+            android:id="@+id/tv_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="109dp"
+            android:layout_marginTop="64dp"
+            android:text="Location"
+            android:textColor="#454848"
+            android:textSize="9sp" />
+
+        <TextView
+            android:id="@+id/tv_rp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="96dp"
+            android:layout_marginTop="91dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Rp"
+            android:textColor="#538F8D" />
+
+        <TextView
+            android:id="@+id/tv_harga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="118dp"
+            android:layout_marginTop="91dp"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Harga"
+            android:textColor="#538F8D" />
+
+        <ImageView
+            android:id="@+id/imageView14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="345dp"
+            android:layout_marginTop="45dp"
+            app:srcCompat="@drawable/ic_star" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="358dp"
+            android:layout_marginTop="44dp"
+            android:text="Rating"
+            android:textSize="10sp" />
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>
