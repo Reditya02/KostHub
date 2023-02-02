@@ -143,6 +143,15 @@
         android:id="@+id/pemilikHomeFragment"
         android:name="com.example.kosthub.ui.pemilik.home.PemilikHomeFragment"
         android:label="fragment_pemilik_home"
-        tools:layout="@layout/fragment_pemilik_home" />
+        tools:layout="@layout/fragment_pemilik_home" >
+        <action
+            android:id="@+id/action_pemilikHomeFragment_to_pemilikDaftarKamarFragment"
+            app:destination="@id/pemilikDaftarKamarFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pemilikDaftarKamarFragment"
+        android:name="com.example.kosthub.ui.pemilik.daftarkamar.PemilikDaftarKamarFragment"
+        android:label="fragment_pemilik_daftar_kamar"
+        tools:layout="@layout/fragment_pemilik_daftar_kamar" />
 
 </navigation>

@@ -9,6 +9,7 @@ import android.text.SpannableStringBuilder
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.core.text.bold
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.kosthub.R
@@ -52,8 +53,6 @@ class PemilikHomeFragment : Fragment() {
 
     }
 
-
-
     private fun showPromoCard() {
         binding.apply {
             val imageList = listOf(
@@ -83,7 +82,9 @@ class PemilikHomeFragment : Fragment() {
 
         dialogBinding.apply {
             cardLihatKamar.setOnClickListener {
-
+                dialog.dismiss()
+                val toListKamar = PemilikHomeFragmentDirections.actionPemilikHomeFragmentToPemilikDaftarKamarFragment()
+                findNavController().navigate(toListKamar)
             }
         }
 

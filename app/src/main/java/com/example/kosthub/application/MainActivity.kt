@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             navBottom.apply {
                 visibility = View.VISIBLE
+                getMenu().clear()
                 inflateMenu(menu)
             }
             frame.apply {

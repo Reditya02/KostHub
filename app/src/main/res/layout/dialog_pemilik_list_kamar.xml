@@ -19,31 +19,6 @@
             android:text="Atur"/>
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_lihat_kamar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginVertical="20dp"
-                android:layout_marginStart="24dp">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_bed"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    style="@style/body2"
-                    android:text="Lihat Kamar"
-                    android:layout_marginStart="11dp"/>
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_ubah_kost"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
