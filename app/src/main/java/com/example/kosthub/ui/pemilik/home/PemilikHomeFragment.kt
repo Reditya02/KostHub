@@ -82,7 +82,9 @@ class PemilikHomeFragment : Fragment() {
         val dialogBinding = DialogPemilikListKostBinding.inflate(LayoutInflater.from(requireContext()))
 
         dialogBinding.apply {
+            cardLihatKamar.setOnClickListener {
 
+            }
         }
 
         dialog.setContentView(dialogBinding.root)

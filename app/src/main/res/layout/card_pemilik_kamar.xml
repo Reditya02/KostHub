@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="8dp"
-    android:id="@+id/card_pemilik_kost"
+    android:id="@+id/card_pemilik_kamar"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
@@ -62,14 +62,14 @@
                 android:id="@+id/iv_ic_location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginStart="12dp"
-                app:layout_constraintBottom_toBottomOf="@id/iv_kamar"
+                app:layout_constraintTop_toBottomOf="@id/tv_nama_kamar"
                 app:layout_constraintLeft_toRightOf="@id/iv_kamar"
                 android:src="@drawable/ic_location"/>
 
             <TextView
-                android:id="@+id/tv_lokasi_kost"
+                android:id="@+id/tv_lokasi_kamar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 style="@style/location"
@@ -78,7 +78,19 @@
                 app:layout_constraintBottom_toBottomOf="@id/iv_ic_location"
                 app:layout_constraintLeft_toRightOf="@id/iv_ic_location"
                 android:text="Kecamatan Lorem, Bandung"/>
-            
+
+            <TextView
+                android:id="@+id/tv_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/body2_bold"
+                android:textColor="@color/colorSecondary"
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_kamar"
+                app:layout_constraintStart_toEndOf="@id/iv_kamar"
+                android:text="Rp 1.200.000"/>
+
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,7 +123,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
-
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
