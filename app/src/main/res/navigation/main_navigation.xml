@@ -141,7 +141,7 @@
     </fragment>
     <fragment
         android:id="@+id/pemilikHomeFragment"
-        android:name="com.example.kosthub.ui.pemilik.PemilikHomeFragment"
+        android:name="com.example.kosthub.ui.pemilik.home.PemilikHomeFragment"
         android:label="fragment_pemilik_home"
         tools:layout="@layout/fragment_pemilik_home" />
 

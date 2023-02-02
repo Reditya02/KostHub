@@ -1,14 +1,282 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.pemilik.PemilikHomeFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.pemilik.home.PemilikHomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="0dp"
+        android:padding="10dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintDimensionRatio="W, 72:360">
 
-</FrameLayout>
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_avatar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            android:src="@drawable/gambar_kost"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:layout_constraintLeft_toRightOf="@id/img_avatar"
+            app:layout_constraintTop_toTopOf="@id/img_avatar"
+            app:layout_constraintBottom_toBottomOf="@id/img_avatar"
+            android:text="Halo, Lorem!"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_margin="16dp"
+            android:elevation="20dp"
+            app:layout_constraintTop_toTopOf="@id/img_avatar"
+            app:layout_constraintBottom_toBottomOf="@id/img_avatar"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintDimensionRatio="1:1">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="4dp"
+                android:src="@drawable/ic_notifications"/>
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/appbar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp">
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/is_promo"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintDimensionRatio="H, 32:15"/>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/btn_tambah_kost"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                android:elevation="20dp"
+                app:layout_constraintTop_toBottomOf="@id/is_promo"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintDimensionRatio="H, 320:52">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+                        android:id="@+id/img_add"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="img"
+                        android:padding="14dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:backgroundTint="@color/white"
+                        android:src="@drawable/ic_add_box"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/body2"
+                        android:text="Tambah kost baru"
+                        app:layout_constraintLeft_toRightOf="@id/img_add"
+                        app:layout_constraintTop_toTopOf="@id/img_add"
+                        app:layout_constraintBottom_toBottomOf="@id/img_add"/>
+
+                    <ImageView
+                        android:id="@+id/img_arrow"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:contentDescription="img"
+                        android:padding="14dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:backgroundTint="@color/white"
+                        android:src="@drawable/ic_arrow_right"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/tv_statistics"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/subtitle1"
+                android:text="Statistik"
+                app:layout_constraintTop_toBottomOf="@id/btn_tambah_kost"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintDimensionRatio="H, 156:60"/>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_pemesan"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="4dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_statistics"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@id/card_penghuni"
+                app:layout_constraintDimensionRatio="H, 156:60">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/body3"
+                        android:text="Pemesan"/>
+
+                    <TextView
+                        android:id="@+id/tv_pemesan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/subtitle1"
+                        android:text="3"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_penghuni"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_margin="4dp"
+                app:layout_constraintTop_toBottomOf="@id/tv_statistics"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/card_pemesan"
+                app:layout_constraintDimensionRatio="H, 156:60">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/body3"
+                        android:text="Penghuni"/>
+
+                    <TextView
+                        android:id="@+id/tv_penghuni"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/subtitle1"
+                        android:text="20"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_kosong"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                app:layout_constraintDimensionRatio="H, 156:60"
+                app:layout_constraintLeft_toLeftOf="@id/card_pemesan"
+                app:layout_constraintRight_toRightOf="@id/card_pemesan"
+                app:layout_constraintTop_toBottomOf="@id/card_pemesan">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/body3"
+                        android:text="Kamar Kosong"/>
+
+                    <TextView
+                        android:id="@+id/tv_kosong"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/subtitle1"
+                        android:text="5"/>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tv_kost_kamu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/subtitle1"
+                android:text="Kost Kamu"
+                android:layout_marginTop="28dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintTop_toBottomOf="@id/card_kosong"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintDimensionRatio="H, 156:60"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recycler_view"
+                app:layout_constraintTop_toBottomOf="@id/tv_kost_kamu"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                tools:listitem="@layout/card_pemilik_kost"
+                tools:itemCount="1"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toBottomOf="@id/recycler_view"
+                app:layout_constraintDimensionRatio="W, 1:5"
+                app:layout_constraintLeft_toLeftOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

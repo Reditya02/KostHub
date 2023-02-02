@@ -12,5 +12,39 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">#FFFFFF</item>
         <!-- Customize your theme here. -->
+        <item name="backgroundColor">#FAFAFB</item>
+    </style>
+
+    <style name="subtitle1">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:textColor">#171717</item>
+    </style>
+
+    <style name="body2">
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:textColor">#171717</item>
+    </style>
+
+    <style name="body2_bold">
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:textColor">#171717</item>
+    </style>
+
+    <style name="body3">
+        <item name="android:textSize">10sp</item>
+        <item name="android:letterSpacing">0</item>
+        <item name="android:textColor">#454848</item>
+    </style>
+
+    <style name="location">
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:textSize">9sp</item>
+        <item name="android:textColor">#454848</item>
     </style>
 </resources>

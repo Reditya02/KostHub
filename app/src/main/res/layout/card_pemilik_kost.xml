@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="8dp"
+    android:id="@+id/card_pemilik_kost"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:elevation="20dp"
+        android:layout_margin="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintDimensionRatio="W, 120:320">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_kost"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_margin="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                android:src="@drawable/gambar_kost"
+                android:background="@drawable/rectangle_rounded_16"
+                app:layout_constraintDimensionRatio="H, 106:76"/>
+
+            <ImageView
+                android:id="@+id/chip_putra"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginStart="12dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toRightOf="@id/iv_kost"
+                android:src="@drawable/chip_putra"/>
+
+            <TextView
+                android:id="@+id/tv_nama_kost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/body2_bold"
+                android:layout_marginTop="40dp"
+                android:layout_marginStart="12dp"
+                app:layout_constraintTop_toTopOf="@id/iv_kost"
+                app:layout_constraintLeft_toRightOf="@id/iv_kost"
+                android:text="Kost Lorem"/>
+
+            <ImageView
+                android:id="@+id/iv_ic_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginStart="12dp"
+                app:layout_constraintBottom_toBottomOf="@id/iv_kost"
+                app:layout_constraintLeft_toRightOf="@id/iv_kost"
+                android:src="@drawable/ic_location"/>
+
+            <TextView
+                android:id="@+id/tv_lokasi_kost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/location"
+                android:layout_marginStart="4dp"
+                app:layout_constraintTop_toTopOf="@id/iv_ic_location"
+                app:layout_constraintBottom_toBottomOf="@id/iv_ic_location"
+                app:layout_constraintLeft_toRightOf="@id/iv_ic_location"
+                android:text="Kost Lorem"/>
+            
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintTop_toTopOf="@id/tv_rating"
+                app:layout_constraintBottom_toBottomOf="@id/tv_rating"
+                app:layout_constraintRight_toLeftOf="@id/tv_rating"
+                android:src="@drawable/ic_star"/>
+
+            <TextView
+                android:id="@+id/tv_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/body3"
+                android:layout_marginEnd="12dp"
+                app:layout_constraintTop_toTopOf="@id/tv_nama_kost"
+                app:layout_constraintBottom_toBottomOf="@id/tv_nama_kost"
+                app:layout_constraintRight_toRightOf="parent"
+                android:text="4.5"/>
+
+            <ImageView
+                android:id="@+id/menu_kebab"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:src="@drawable/ic_kebab"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
