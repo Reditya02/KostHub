@@ -32,8 +32,8 @@ class Welcome4Fragment : Fragment() {
         binding.apply {
 
             btnMulai.setOnClickListener{
-                val _toPilihRoleFragment = Welcome4FragmentDirections.actionWelcomeFragment4ToPilihRoleFragment()
-                findNavController().navigate(_toPilihRoleFragment)
+                val toPilihRoleFragment = Welcome4FragmentDirections.actionWelcomeFragment4ToPilihRoleFragment()
+                findNavController().navigate(toPilihRoleFragment)
             }
 
         }

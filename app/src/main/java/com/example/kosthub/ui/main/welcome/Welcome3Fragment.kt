@@ -9,11 +9,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.kosthub.R
 import com.example.kosthub.databinding.FragmentWelcome2Binding
+import com.example.kosthub.databinding.FragmentWelcome3Binding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class Welcome3Fragment : Fragment() {
-    private var _binding: FragmentWelcome2Binding? = null
+    private var _binding: FragmentWelcome3Binding? = null
     private val binding get() = _binding!!
 
     private val viewModel: WelcomeViewModel by viewModels()
@@ -22,7 +23,7 @@ class Welcome3Fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentWelcome2Binding.inflate(inflater, container, false)
+        _binding = FragmentWelcome3Binding.inflate(inflater, container, false)
         return binding.root
     }
 

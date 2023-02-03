@@ -41,7 +41,6 @@ class PemilikHomeFragment : Fragment() {
         _binding = FragmentPemilikHomeBinding.inflate(layoutInflater, container, false)
         (activity as MainActivity).apply {
             showNavbar(R.menu.pemilik_bottom_navigation_menu)
-            supportActionBar?.hide()
         }
         return binding.root
     }
