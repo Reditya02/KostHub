@@ -4,17 +4,17 @@ import androidx.lifecycle.MutableLiveData
 import com.example.kosthub.data.remote.model.BaseResponse
 import com.example.kosthub.data.remote.model.user.response.StatisticResponse
 
-class DummyUserRepository {
+object DummyUserRepository {
     fun getStatistics(): MutableLiveData<BaseResponse<StatisticResponse>> {
-        val dummyResponse = MutableLiveData(BaseResponse<StatisticResponse>(
+        val dummyResponse = MutableLiveData(BaseResponse(
             data = StatisticResponse(
                 bookers = 3,
                 emptyRooms = 5,
-                id = null,
+                id = 2,
                 occupants = 20
             ),
             message = "",
-            status = "",
+            status = "200",
             error = null
         ))
 

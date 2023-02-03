@@ -9,12 +9,14 @@ import android.text.SpannableStringBuilder
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.core.text.bold
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.kosthub.R
 import com.example.kosthub.application.MainActivity
 import com.example.kosthub.data.remote.model.kostroom.response.AllKostResponse
+import com.example.kosthub.data.remote.model.user.response.StatisticResponse
 import com.example.kosthub.databinding.DialogPemilikListKostBinding
 import com.example.kosthub.databinding.FragmentPemilikHomeBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
@@ -26,6 +28,9 @@ class PemilikHomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var listkost: List<AllKostResponse>
+    private lateinit var statistics: StatisticResponse
+
+    private val viewModel: PemilikHomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,10 +52,26 @@ class PemilikHomeFragment : Fragment() {
             AllKostResponse(image = "", address = "", id = "", label = "", type = "")
         )
 
+        viewModel.getStatistic.observe(viewLifecycleOwner) {
+            if (it.status == "200") {
+                it.data?.apply {
+                    binding.apply {
+                        tvKosong.text = emptyRooms.toString()
+                        tvPemesan.text = bookers.toString()
+                        tvPenghuni.text = occupants.toString()
+                    }
+                }
+            }
+        }
+
         showRecycler()
         showPromoCard()
+    }
 
+    private fun showStatistics() {
+        binding.apply {
 
+        }
     }
 
     private fun showPromoCard() {

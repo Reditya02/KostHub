@@ -25,8 +25,10 @@ class MainActivity : AppCompatActivity() {
         binding.apply {
             navBottom.apply {
                 visibility = View.VISIBLE
-                getMenu().clear()
-                inflateMenu(menu)
+                if (getMenu().size() <= 1) {
+                    getMenu().clear()
+                    inflateMenu(menu)
+                }
             }
             frame.apply {
                 layoutParams.height = 0

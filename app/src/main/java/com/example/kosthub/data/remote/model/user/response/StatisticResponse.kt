@@ -8,14 +8,14 @@ import kotlinx.parcelize.Parcelize
 data class StatisticResponse(
 
 	@field:SerializedName("bookers")
-	val bookers: Int? = null,
+	val bookers: Int,
 
 	@field:SerializedName("empty_rooms")
-	val emptyRooms: Int? = null,
+	val emptyRooms: Int,
 
 	@field:SerializedName("id")
-	val id: Int? = null,
+	val id: Int,
 
 	@field:SerializedName("occupants")
-	val occupants: Int? = null
+	val occupants: Int
 ) : Parcelable

@@ -172,7 +172,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         style="@style/subtitle1"
-                        android:text="3"/>
+                        android:text="0"/>
 
                 </LinearLayout>
 
@@ -207,7 +207,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         style="@style/subtitle1"
-                        android:text="20"/>
+                        android:text="0"/>
 
                 </LinearLayout>
 
@@ -242,7 +242,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         style="@style/subtitle1"
-                        android:text="5"/>
+                        android:text="0"/>
 
                 </LinearLayout>
 
