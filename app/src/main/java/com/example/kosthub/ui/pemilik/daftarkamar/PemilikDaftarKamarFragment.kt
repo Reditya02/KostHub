@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kosthub.R
 import com.example.kosthub.data.remote.model.kostroom.response.AllKostResponse
@@ -39,6 +40,9 @@ class PemilikDaftarKamarFragment : Fragment() {
         )
 
         showRecycler()
+        binding.btnBack.setOnClickListener {
+            findNavController().popBackStack()
+        }
 
     }
 
