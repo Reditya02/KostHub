@@ -16,8 +16,6 @@ class Welcome4Fragment : Fragment() {
     private var _binding: FragmentWelcome4Binding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: WelcomeViewModel by viewModels()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

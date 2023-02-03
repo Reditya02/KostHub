@@ -7,11 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.kosthub.R
 import com.example.kosthub.databinding.FragmentTermOfServiceBinding
-import com.example.kosthub.databinding.FragmentWelcome3Binding
-import com.example.kosthub.ui.main.welcome.WelcomeFragmentDirections
-import com.example.kosthub.ui.main.welcome.WelcomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

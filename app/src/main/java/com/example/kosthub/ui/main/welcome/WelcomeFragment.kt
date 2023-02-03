@@ -11,12 +11,9 @@ import com.example.kosthub.databinding.FragmentWelcome3Binding
 import com.example.kosthub.databinding.FragmentWelcomeBinding
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint
 class WelcomeFragment : Fragment() {
     private var _binding: FragmentWelcomeBinding? = null
     private val binding get() = _binding!!
-
-    private val viewModel: WelcomeViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
