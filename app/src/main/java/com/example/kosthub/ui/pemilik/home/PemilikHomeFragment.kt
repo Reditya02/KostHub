@@ -7,6 +7,8 @@ import android.os.Bundle
 import android.text.Html
 import android.text.SpannableStringBuilder
 import android.view.*
+import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.core.text.bold
 import androidx.fragment.app.viewModels
@@ -21,6 +23,7 @@ import com.example.kosthub.databinding.DialogPemilikListKostBinding
 import com.example.kosthub.databinding.FragmentPemilikHomeBinding
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import dagger.hilt.android.AndroidEntryPoint
+import kotlin.system.exitProcess
 
 @AndroidEntryPoint
 class PemilikHomeFragment : Fragment() {
@@ -28,7 +31,6 @@ class PemilikHomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private lateinit var listkost: List<AllKostResponse>
-    private lateinit var statistics: StatisticResponse
 
     private val viewModel: PemilikHomeViewModel by viewModels()
 
@@ -66,12 +68,20 @@ class PemilikHomeFragment : Fragment() {
 
         showRecycler()
         showPromoCard()
+
+        requireActivity()
+            .onBackPressedDispatcher
+            .addCallback(viewLifecycleOwner, backPressedDispatcher)
     }
 
-    private fun showStatistics() {
-        binding.apply {
-
+    private val backPressedDispatcher = object : OnBackPressedCallback(true) {
+        override fun handleOnBackPressed() {
+            onBackPressed()
         }
+    }
+
+    private fun onBackPressed() {
+        exitProcess(-1)
     }
 
     private fun showPromoCard() {
