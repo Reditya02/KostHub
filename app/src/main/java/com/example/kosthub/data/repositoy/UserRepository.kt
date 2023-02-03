@@ -7,6 +7,7 @@ import com.example.kosthub.data.remote.model.user.response.AuthResponse
 import com.example.kosthub.data.remote.model.BaseResponse
 import com.example.kosthub.data.remote.model.user.response.DetailUserResponse
 import com.example.kosthub.data.remote.model.user.request.*
+import com.example.kosthub.data.remote.model.user.response.StatisticResponse
 import com.example.kosthub.utils.Role
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -315,6 +316,30 @@ class UserRepository @Inject constructor(
         return apiResponse
     }
 
+    fun getStatistics(): MutableLiveData<BaseResponse<StatisticResponse>> {
+        val apiRequest = apiService.getStatistic(pref.getToken())
+        val apiResponse = MutableLiveData(BaseResponse<StatisticResponse>(
+            data = null, message = "no response", status = "", error = null
+        ))
 
+        apiRequest.enqueue(object : Callback<BaseResponse<StatisticResponse>> {
+            override fun onResponse(
+                call: Call<BaseResponse<StatisticResponse>>,
+                response: Response<BaseResponse<StatisticResponse>>
+            ) {
+                response.body()?.let {
+                    apiResponse.value = it
+                    if (it.status == "OK") {
+                        getDetailUser(pref.getToken())
+                    }
+                }
+            }
 
+            override fun onFailure(call: Call<BaseResponse<StatisticResponse>>, t: Throwable) {
+                apiResponse.value = BaseResponse(data = null, message = t.toString(), status = "error")
+            }
+        })
+
+        return apiResponse
+    }
 }

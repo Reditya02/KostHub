@@ -11,6 +11,7 @@ import com.example.kosthub.data.remote.model.transaction.response.TransactionOwn
 import com.example.kosthub.data.remote.model.transaction.request.UpdateTransactionRequest
 import com.example.kosthub.data.remote.model.user.response.DetailUserResponse
 import com.example.kosthub.data.remote.model.user.request.*
+import com.example.kosthub.data.remote.model.user.response.StatisticResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -186,11 +187,10 @@ interface ApiService {
     ): Call<BaseResponseMultiData<TransactionByIdResponse>>
 
     //Statistic
-    //TODO: undone
     @GET("/v1/statistic")
     fun getStatistic(
         @Header("Authorization") token: String,
-    )
+    ): Call<BaseResponse<StatisticResponse>>
 
 
 }
