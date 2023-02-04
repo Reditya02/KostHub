@@ -11,7 +11,7 @@ object ListCheckableItem {
         )
     )
 
-    val fasilitas = listOf(
+    val fasilitasKost = listOf(
         CheckableItem(
             id = 0,
             image = 0,

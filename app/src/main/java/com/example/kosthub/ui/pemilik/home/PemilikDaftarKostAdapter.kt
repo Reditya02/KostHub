@@ -13,7 +13,8 @@ class PemilikDaftarKostAdapter(
     private val onClick: (AllKostResponse) -> Unit
 ) : RecyclerView.Adapter<PemilikDaftarKostAdapter.Holder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-        val view = CardPemilikKostBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val view = CardPemilikKostBinding
+            .inflate(LayoutInflater.from(parent.context), parent, false)
         return Holder(view)
     }
 
