@@ -92,10 +92,10 @@ data class Location(
 	val district: String? = null,
 
 	@field:SerializedName("long")
-	val jsonMemberLong: String? = null,
+	val long: Double? = null,
 
 	@field:SerializedName("lat")
-	val lat: String? = null
+	val lat: Double? = null
 ) : Parcelable
 
 @Parcelize
