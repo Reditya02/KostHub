@@ -20,16 +20,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/subtitle1"
-        android:layout_marginBottom="12dp"
-        android:text="Kost Berhasil Ditambahkan"/>
+        android:layout_marginBottom="12dp" />
 
     <TextView
         android:id="@+id/tv_message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/body2"
-        android:layout_marginBottom="40dp"
-        android:text="selamat bla bla bla"/>
+        android:layout_marginBottom="40dp" />
 
     <Button
         android:id="@+id/btn_lihat_kost"

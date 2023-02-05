@@ -39,6 +39,19 @@ class PemilikTambahKostLocationFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val isNew = PemilikTambahKostLocationFragmentArgs.fromBundle(arguments as Bundle).isNew
+
+        if (!isNew) {
+            binding.apply {
+                tvAppbar.text = "Edit Kost"
+            }
+            //TODO: Pre-filled text field
+        } else {
+            binding.apply {
+                tvAppbar.text = "Tambah Kost"
+            }
+        }
+
 
         binding.apply {
             childFragmentManager
@@ -51,7 +64,7 @@ class PemilikTambahKostLocationFragment : Fragment() {
             }
 
             btnAddKost.setOnClickListener {
-                val toSuccessPage = PemilikTambahKostLocationFragmentDirections.actionPemilikTambahKostLocationFragmentToPemilikSuccessTambahFragment()
+                val toSuccessPage = PemilikTambahKostLocationFragmentDirections.actionPemilikTambahKostLocationFragmentToPemilikSuccessTambahFragment(isNew)
                 findNavController().navigate(toSuccessPage)
             }
         }

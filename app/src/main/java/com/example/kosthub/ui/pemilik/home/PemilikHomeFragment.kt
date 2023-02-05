@@ -67,7 +67,7 @@ class PemilikHomeFragment : Fragment() {
         showPromoCard()
 
         binding.btnTambahKost.setOnClickListener {
-            val toTambahKost = PemilikHomeFragmentDirections.actionPemilikHomeFragmentToPemilikTambahKostFragment()
+            val toTambahKost = PemilikHomeFragmentDirections.actionPemilikHomeFragmentToPemilikTambahKostFragment(true)
             findNavController().navigate(toTambahKost)
         }
 
@@ -118,6 +118,10 @@ class PemilikHomeFragment : Fragment() {
                 dialog.dismiss()
                 val toListKamar = PemilikHomeFragmentDirections.actionPemilikHomeFragmentToPemilikDaftarKamarFragment()
                 findNavController().navigate(toListKamar)
+            }
+            cardUbahKost.setOnClickListener {
+                val toTambahKost = PemilikHomeFragmentDirections.actionPemilikHomeFragmentToPemilikTambahKostFragment(false)
+                findNavController().navigate(toTambahKost)
             }
         }
 

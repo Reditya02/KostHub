@@ -24,7 +24,17 @@ class PemilikSuccessTambahFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val isNew = PemilikSuccessTambahFragmentArgs.fromBundle(arguments as Bundle).isNew
+
         binding.apply {
+            if (!isNew) {
+                tvTitle.text = "Kost Berhasil di Ubah"
+                tvMessage.text = "Selamat kost kamu berhasil di ubah, kamu bisa cek semua kost kamu di halaman beranda."
+            } else {
+                tvTitle.text = "Kost Berhasil Ditambahkan"
+                tvMessage.text = "Selamat kost kamu berhasil di tambahkan, kamu bisa cek semua kost kamu di halaman beranda."
+            }
+
             btnLihatKost.setOnClickListener {
                 val toKost = PemilikSuccessTambahFragmentDirections.actionPemilikSuccessTambahFragmentToPemilikDaftarKamarFragment()
                 findNavController().navigate(toKost)

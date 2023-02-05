@@ -164,6 +164,9 @@
         <action
             android:id="@+id/action_pemilikTambahKostFragment_to_pemilikTambahKostLocationFragment"
             app:destination="@id/pemilikTambahKostLocationFragment" />
+        <argument
+            android:name="isNew"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/pemilikTambahKostLocationFragment"
@@ -173,6 +176,9 @@
         <action
             android:id="@+id/action_pemilikTambahKostLocationFragment_to_pemilikSuccessTambahFragment"
             app:destination="@id/pemilikSuccessTambahFragment" />
+        <argument
+            android:name="isNew"
+            app:argType="boolean" />
     </fragment>
     <fragment
         android:id="@+id/pemilikSuccessTambahFragment"
@@ -185,6 +191,9 @@
         <action
             android:id="@+id/action_pemilikSuccessTambahFragment_to_pemilikDaftarKamarFragment"
             app:destination="@id/pemilikDaftarKamarFragment" />
+        <argument
+            android:name="isNew"
+            app:argType="boolean" />
     </fragment>
 
 </navigation>

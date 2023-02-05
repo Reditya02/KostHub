@@ -33,9 +33,22 @@ class PemilikTambahKostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val isNew = PemilikTambahKostFragmentArgs.fromBundle(arguments as Bundle).isNew
+
+        if (!isNew) {
+            binding.apply {
+                tvAppbar.text = "Edit Kost"
+                //TODO: Pre-filled text field
+            }
+        } else {
+            binding.apply {
+                tvAppbar.text = "Tambah Kost"
+            }
+        }
+
         binding.apply {
             btnNext.setOnClickListener {
-                val toLocation = PemilikTambahKostFragmentDirections.actionPemilikTambahKostFragmentToPemilikTambahKostLocationFragment()
+                val toLocation = PemilikTambahKostFragmentDirections.actionPemilikTambahKostFragmentToPemilikTambahKostLocationFragment(isNew)
                 findNavController().navigate(toLocation)
             }
             btnBack.setOnClickListener {
