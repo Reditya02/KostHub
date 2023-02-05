@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".application.KostHubApp"
@@ -15,6 +15,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KostHub"
         tools:targetApi="31">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCwhWTbmga69VzBvH8yGIL-J5B9uTx0KW4" />
+
         <activity
             android:name=".ui.main.splashScreen.SplashScreenActivity"
             android:exported="false">

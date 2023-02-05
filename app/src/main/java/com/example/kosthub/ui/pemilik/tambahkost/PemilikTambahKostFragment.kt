@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kosthub.R
+import com.example.kosthub.application.MainActivity
 import com.example.kosthub.data.locale.raw.ListCheckableItem
 import com.example.kosthub.databinding.FragmentPemilikHomeBinding
 import com.example.kosthub.databinding.FragmentPemilikTambahKostBinding
@@ -23,13 +25,23 @@ class PemilikTambahKostFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
+        (activity as MainActivity).hideNavbar()
         _binding = FragmentPemilikTambahKostBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.apply {
+            btnNext.setOnClickListener {
+                val toLocation = PemilikTambahKostFragmentDirections.actionPemilikTambahKostFragmentToPemilikTambahKostLocationFragment()
+                findNavController().navigate(toLocation)
+            }
+            btnBack.setOnClickListener {
+                findNavController().popBackStack()
+            }
+        }
 
         showRvKostRules()
         showRvKostFacility()

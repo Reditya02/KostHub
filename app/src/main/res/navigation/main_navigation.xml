@@ -147,11 +147,28 @@
         <action
             android:id="@+id/action_pemilikHomeFragment_to_pemilikDaftarKamarFragment"
             app:destination="@id/pemilikDaftarKamarFragment" />
+        <action
+            android:id="@+id/action_pemilikHomeFragment_to_pemilikTambahKostFragment"
+            app:destination="@id/pemilikTambahKostFragment" />
     </fragment>
     <fragment
         android:id="@+id/pemilikDaftarKamarFragment"
         android:name="com.example.kosthub.ui.pemilik.daftarkamar.PemilikDaftarKamarFragment"
         android:label="fragment_pemilik_daftar_kamar"
         tools:layout="@layout/fragment_pemilik_daftar_kamar" />
+    <fragment
+        android:id="@+id/pemilikTambahKostFragment"
+        android:name="com.example.kosthub.ui.pemilik.tambahkost.PemilikTambahKostFragment"
+        android:label="fragment_pemilik_tambah_kost"
+        tools:layout="@layout/fragment_pemilik_tambah_kost" >
+        <action
+            android:id="@+id/action_pemilikTambahKostFragment_to_pemilikTambahKostLocationFragment"
+            app:destination="@id/pemilikTambahKostLocationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pemilikTambahKostLocationFragment"
+        android:name="com.example.kosthub.ui.pemilik.tambahkost.PemilikTambahKostLocationFragment"
+        android:label="fragment_pemilik_tambah_kost_location"
+        tools:layout="@layout/fragment_pemilik_tambah_kost_location" />
 
 </navigation>

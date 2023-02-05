@@ -39,9 +39,7 @@ class PemilikHomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentPemilikHomeBinding.inflate(layoutInflater, container, false)
-        (activity as MainActivity).apply {
-            showNavbar(R.menu.pemilik_bottom_navigation_menu)
-        }
+        (activity as MainActivity).showNavbar(R.menu.pemilik_bottom_navigation_menu)
         return binding.root
     }
 
@@ -67,6 +65,11 @@ class PemilikHomeFragment : Fragment() {
 
         showRecycler()
         showPromoCard()
+
+        binding.btnTambahKost.setOnClickListener {
+            val toTambahKost = PemilikHomeFragmentDirections.actionPemilikHomeFragmentToPemilikTambahKostFragment()
+            findNavController().navigate(toTambahKost)
+        }
 
         requireActivity()
             .onBackPressedDispatcher

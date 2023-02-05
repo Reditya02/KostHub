@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kosthub.R
+import com.example.kosthub.application.MainActivity
 import com.example.kosthub.data.remote.model.kostroom.response.AllKostResponse
 import com.example.kosthub.databinding.DialogPemilikListKamarBinding
 import com.example.kosthub.databinding.DialogPemilikListKostBinding
@@ -28,6 +29,7 @@ class PemilikDaftarKamarFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        (activity as MainActivity).hideNavbar()
         _binding = FragmentPemilikDaftarKamarBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
