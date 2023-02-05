@@ -169,6 +169,22 @@
         android:id="@+id/pemilikTambahKostLocationFragment"
         android:name="com.example.kosthub.ui.pemilik.tambahkost.PemilikTambahKostLocationFragment"
         android:label="fragment_pemilik_tambah_kost_location"
-        tools:layout="@layout/fragment_pemilik_tambah_kost_location" />
+        tools:layout="@layout/fragment_pemilik_tambah_kost_location" >
+        <action
+            android:id="@+id/action_pemilikTambahKostLocationFragment_to_pemilikSuccessTambahFragment"
+            app:destination="@id/pemilikSuccessTambahFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/pemilikSuccessTambahFragment"
+        android:name="com.example.kosthub.ui.pemilik.successtambah.PemilikSuccessTambahFragment"
+        android:label="fragment_pemilik_success_tambah"
+        tools:layout="@layout/fragment_pemilik_success_tambah" >
+        <action
+            android:id="@+id/action_pemilikSuccessTambahFragment_to_pemilikHomeFragment"
+            app:destination="@id/pemilikHomeFragment" />
+        <action
+            android:id="@+id/action_pemilikSuccessTambahFragment_to_pemilikDaftarKamarFragment"
+            app:destination="@id/pemilikDaftarKamarFragment" />
+    </fragment>
 
 </navigation>

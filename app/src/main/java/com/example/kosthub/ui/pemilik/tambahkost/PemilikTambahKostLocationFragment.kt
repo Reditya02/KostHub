@@ -49,6 +49,11 @@ class PemilikTambahKostLocationFragment : Fragment() {
             btnBack.setOnClickListener {
                 findNavController().popBackStack()
             }
+
+            btnAddKost.setOnClickListener {
+                val toSuccessPage = PemilikTambahKostLocationFragmentDirections.actionPemilikTambahKostLocationFragmentToPemilikSuccessTambahFragment()
+                findNavController().navigate(toSuccessPage)
+            }
         }
     }
 

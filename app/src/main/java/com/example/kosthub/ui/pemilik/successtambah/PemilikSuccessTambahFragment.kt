@@ -5,15 +5,34 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.kosthub.R
+import com.example.kosthub.databinding.FragmentPemilikSuccessTambahBinding
 
 class PemilikSuccessTambahFragment : Fragment() {
+    private var _binding: FragmentPemilikSuccessTambahBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
+        _binding = FragmentPemilikSuccessTambahBinding.inflate(layoutInflater, container, false)
+        return binding.root
+    }
 
-        return inflater.inflate(R.layout.fragment_pemilik_success_tambah, container, false)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.apply {
+            btnLihatKost.setOnClickListener {
+                val toKost = PemilikSuccessTambahFragmentDirections.actionPemilikSuccessTambahFragmentToPemilikDaftarKamarFragment()
+                findNavController().navigate(toKost)
+            }
+            tvHome.setOnClickListener {
+                val toHome = PemilikSuccessTambahFragmentDirections.actionPemilikSuccessTambahFragmentToPemilikHomeFragment()
+                findNavController().navigate(toHome)
+            }
+        }
     }
 }
