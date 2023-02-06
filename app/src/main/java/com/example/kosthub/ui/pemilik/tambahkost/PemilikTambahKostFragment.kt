@@ -1,13 +1,19 @@
 package com.example.kosthub.ui.pemilik.tambahkost
 
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.work.Data
+import androidx.work.OneTimeWorkRequest
+import androidx.work.WorkManager
 import com.example.kosthub.R
 import com.example.kosthub.application.MainActivity
 import com.example.kosthub.data.locale.raw.ListCheckableItem
@@ -15,11 +21,17 @@ import com.example.kosthub.databinding.FragmentPemilikHomeBinding
 import com.example.kosthub.databinding.FragmentPemilikTambahKostBinding
 import com.example.kosthub.ui.pemilik.CheckboxAdapter
 import com.example.kosthub.utils.Const
+import com.example.kosthub.utils.worker.BlurWorker
+import com.example.kosthub.utils.worker.uriToFile
 
 class PemilikTambahKostFragment : Fragment() {
 
     private var _binding: FragmentPemilikTambahKostBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var workManager: WorkManager
+
+    private lateinit var imageHolder: ImageView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +46,8 @@ class PemilikTambahKostFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val isNew = PemilikTambahKostFragmentArgs.fromBundle(arguments as Bundle).isNew
+
+        workManager = WorkManager.getInstance(requireContext())
 
         if (!isNew) {
             binding.apply {
@@ -53,6 +67,14 @@ class PemilikTambahKostFragment : Fragment() {
             }
             btnBack.setOnClickListener {
                 findNavController().popBackStack()
+            }
+            imgInside.setOnClickListener {
+                imageHolder = imgInside
+                openGallery()
+            }
+            imgOutside.setOnClickListener {
+                imageHolder = imgOutside
+                openGallery()
             }
         }
 
@@ -95,5 +117,36 @@ class PemilikTambahKostFragment : Fragment() {
                 }
             )
         }
+    }
+
+    private val imageResult = registerForActivityResult(ActivityResultContracts.GetContent()) {
+        val image = it?.let { it1 ->
+            uriToFile(it1, requireContext())
+        }
+
+        imageHolder.setImageURI(it)
+
+        val data = Data.Builder()
+            .putString("image", image?.path)
+            .build()
+        val workRequest = OneTimeWorkRequest
+            .Builder(BlurWorker::class.java)
+            .setInputData(data)
+            .build()
+
+        workManager.enqueue(workRequest)
+        workManager.getWorkInfoByIdLiveData(workRequest.id).observe(viewLifecycleOwner) { workResult ->
+            if (workResult.state.isFinished) {
+                val result = workResult.outputData.keyValueMap["result"]
+                result?.let {
+                    imageHolder.setImageURI(result as Uri)
+                }
+            }
+        }
+
+    }
+
+    private fun openGallery() {
+        imageResult.launch("image/*")
     }
 }
