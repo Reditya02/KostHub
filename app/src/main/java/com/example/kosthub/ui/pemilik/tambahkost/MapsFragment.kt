@@ -21,8 +21,8 @@ import java.util.*
 class MapsFragment : Fragment() {
 
     private val callback = OnMapReadyCallback { googleMap ->
-        val sydney = LatLng(-8.505023589284782, 115.35389319062232)
-        googleMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+        val point = LatLng(-6.175392, 106.827153)
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(point, 12f))
         googleMap.uiSettings.apply {
             isZoomControlsEnabled = true
             isZoomGesturesEnabled = true
@@ -35,9 +35,7 @@ class MapsFragment : Fragment() {
             googleMap.apply {
                 clear()
                 addMarker(
-                    MarkerOptions()
-                        .position(it)
-                        .title("Posisi Kost")
+                    MarkerOptions().position(it)
                 )
             }
             val address = getAddressName(it.latitude, it.longitude)

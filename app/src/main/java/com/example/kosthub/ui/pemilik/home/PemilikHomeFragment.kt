@@ -120,6 +120,7 @@ class PemilikHomeFragment : Fragment() {
                 findNavController().navigate(toListKamar)
             }
             cardUbahKost.setOnClickListener {
+                dialog.dismiss()
                 val toTambahKost = PemilikHomeFragmentDirections.actionPemilikHomeFragmentToPemilikTambahKostFragment(false)
                 findNavController().navigate(toTambahKost)
             }
