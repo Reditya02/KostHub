@@ -8,9 +8,10 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.kosthub.R
 import com.example.kosthub.databinding.FragmentPilihMetodeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 
-
+@AndroidEntryPoint
 class PilihMetodeFragment : Fragment() {
     private var _binding: FragmentPilihMetodeBinding? = null
     private val binding get() = _binding!!
