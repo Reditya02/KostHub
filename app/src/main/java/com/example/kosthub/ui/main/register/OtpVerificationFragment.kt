@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.kosthub.R
 import com.example.kosthub.databinding.FragmentOtpVerificationBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class OtpVerificationFragment : Fragment() {
     private var _binding: FragmentOtpVerificationBinding? = null
     private val binding get() = _binding!!
