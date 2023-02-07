@@ -41,7 +41,7 @@ class Welcome2Fragment : Fragment() {
 
             btnLewati.setOnClickListener{
                 val toWelcomeFragment4 = Welcome2FragmentDirections.actionWelcomeFragment2ToWelcomeFragment4()
-                findNavController().navigate(toWelcomeFragment4)
+                findNavController().navigate(R.id.welcomeFragment4)
             }
 
         }

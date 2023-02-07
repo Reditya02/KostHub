@@ -10,8 +10,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.kosthub.R
 import com.example.kosthub.databinding.FragmentWelcome4Binding
 import com.example.kosthub.databinding.FragmentWelcomeBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class Welcome4Fragment : Fragment() {
     private var _binding: FragmentWelcome4Binding? = null
     private val binding get() = _binding!!
