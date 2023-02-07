@@ -49,18 +49,6 @@
             android:textSize="9sp" />
 
         <TextView
-            android:id="@+id/tv_superkost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="195dp"
-            android:layout_marginTop="13dp"
-            android:background="@drawable/rounded_textview_color_background"
-            android:fontFamily="@font/poppins"
-            android:text="TextView"
-            android:textColor="@color/white"
-            android:textSize="9sp" />
-
-        <TextView
             android:id="@+id/tv_namaKos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -124,5 +112,13 @@
             android:layout_marginTop="44dp"
             android:text="Rating"
             android:textSize="10sp" />
+
+        <ImageView
+            android:id="@+id/btn_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="345dp"
+            android:layout_marginTop="93dp"
+            app:srcCompat="@drawable/icon_love" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
