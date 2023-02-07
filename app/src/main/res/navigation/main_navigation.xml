@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/welcomeFragment">
+    app:startDestination="@+id/welcomeFragment">
+
+
 
     <fragment
         android:id="@+id/welcomeFragment"
@@ -139,6 +141,7 @@
             android:id="@+id/action_otpVerificationFragment_to_pilihMetodeFragment"
             app:destination="@+id/pilihMetodeFragment"/>
     </fragment>
+
     <fragment
         android:id="@+id/pemilikHomeFragment"
         android:name="com.example.kosthub.ui.pemilik.home.PemilikHomeFragment"
@@ -195,5 +198,8 @@
             android:name="isNew"
             app:argType="boolean" />
     </fragment>
+
+
+
 
 </navigation>
