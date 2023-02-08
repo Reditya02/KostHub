@@ -143,6 +143,7 @@
                     android:elevation="20dp">
 
                     <LinearLayout
+                        android:id="@+id/ll_putra"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/bg_chip"
@@ -150,6 +151,7 @@
                         android:paddingVertical="3dp">
 
                         <TextView
+                            android:id="@+id/tv_putra"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Putra" />
@@ -165,6 +167,7 @@
                     android:elevation="20dp">
 
                     <LinearLayout
+                        android:id="@+id/ll_putri"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/bg_chip"
@@ -172,6 +175,7 @@
                         android:paddingVertical="3dp">
 
                         <TextView
+                            android:id="@+id/tv_putri"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Putri" />
@@ -186,6 +190,7 @@
                     android:elevation="20dp">
 
                     <LinearLayout
+                        android:id="@+id/ll_campur"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/bg_chip"
@@ -193,6 +198,7 @@
                         android:paddingVertical="3dp">
 
                         <TextView
+                            android:id="@+id/tv_campur"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Campur" />
@@ -202,6 +208,35 @@
             </LinearLayout>
 
             <TextView
+                android:id="@+id/tv_description"
+                style="@style/subtitle1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Deskripsi Kost"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ll_kost_type" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tf_description"
+                style="@style/KHOutlinedEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_description">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/edt_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top|start"
+                    android:lines="3"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
                 android:id="@+id/tv_kost_rules"
                 style="@style/subtitle1"
                 android:layout_width="wrap_content"
@@ -209,7 +244,7 @@
                 android:layout_marginTop="28dp"
                 android:text="Peraturan Kost"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ll_kost_type" />
+                app:layout_constraintTop_toBottomOf="@id/tf_description" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_kost_rules"

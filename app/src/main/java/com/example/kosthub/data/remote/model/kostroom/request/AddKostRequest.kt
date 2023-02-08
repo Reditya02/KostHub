@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 data class AddKostRequest(
 
 	@field:SerializedName("payment_scheme")
-	val paymentScheme: List<PaymentSchemeItem?>? = null,
+	val paymentScheme: List<Int>? = null,
 
 	@field:SerializedName("address")
 	val address: String? = null,
@@ -26,7 +26,7 @@ data class AddKostRequest(
 	val description: String? = null,
 
 	@field:SerializedName("rules")
-	val rules: List<RulesItem?>? = null,
+	val rules: List<Int>? = null,
 
 	@field:SerializedName("type")
 	val type: String? = null,
@@ -54,18 +54,4 @@ data class AddKostRequest(
 
 	@field:SerializedName("longitude")
 	val longitude: String? = null
-) : Parcelable
-
-@Parcelize
-data class RulesItem(
-
-	@field:SerializedName("id")
-	val id: String? = null
-) : Parcelable
-
-@Parcelize
-data class PaymentSchemeItem(
-
-	@field:SerializedName("id")
-	val id: String? = null
 ) : Parcelable

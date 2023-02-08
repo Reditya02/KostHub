@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.kosthub.R
 import com.example.kosthub.application.MainActivity
+import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
 import com.example.kosthub.data.remote.model.kostroom.response.Location
 import com.example.kosthub.databinding.FragmentPemilikTambahKostLocationBinding
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -23,7 +24,9 @@ class PemilikTambahKostLocationFragment : Fragment() {
     private var _binding: FragmentPemilikTambahKostLocationBinding? = null
     private val binding get() = _binding!!
 
-    var address = Location()
+    private var address = Location()
+
+    private var coordinate = LatLng(0.0, 0.0)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +43,7 @@ class PemilikTambahKostLocationFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val isNew = PemilikTambahKostLocationFragmentArgs.fromBundle(arguments as Bundle).isNew
+        val data = PemilikTambahKostLocationFragmentArgs.fromBundle(arguments as Bundle).data
 
         if (!isNew) {
             binding.apply {
@@ -70,6 +74,34 @@ class PemilikTambahKostLocationFragment : Fragment() {
         }
     }
 
+    private fun setUpData(data: AddKostRequest): AddKostRequest {
+        var res: AddKostRequest
+        binding.apply {
+            data.apply {
+                res = AddKostRequest(
+                    paymentScheme = paymentScheme,
+                    address = edtAlamat.text.toString(),
+                    additionalRule = additionalRule,
+                    city = edtKota.text.toString(),
+                    latitude = coordinate.latitude.toString(),
+                    description = description,
+                    rules = rules,
+                    type = type,
+                    outdoorPhoto = outdoorPhoto,
+                    province = edtProvinsi.text.toString(),
+                    district = edtKecamatan.text.toString(),
+                    name = name,
+                    indoorPhoto = indoorPhoto,
+                    id = null,
+                    adressNote = edtCatatanAlamat.text.toString(),
+                    longitude = coordinate.longitude.toString()
+
+                )
+            }
+        }
+        return res
+    }
+
     private fun isAddressValid(address: String): Boolean {
         address.apply {
             if (contains("Jl. ") || contains("No. ") || contains("Gg. ")) {
@@ -81,6 +113,8 @@ class PemilikTambahKostLocationFragment : Fragment() {
 
     fun retrieveAdress(inAddress: String, latLng: LatLng) {
         val listAddress = inAddress.split(", ")
+
+        coordinate = latLng
 
         val size = listAddress.size
 

@@ -7,7 +7,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.cardview.widget.CardView
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,10 +20,13 @@ import androidx.work.WorkManager
 import com.example.kosthub.R
 import com.example.kosthub.application.MainActivity
 import com.example.kosthub.data.locale.raw.ListCheckableItem
+import com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest
 import com.example.kosthub.databinding.FragmentPemilikHomeBinding
 import com.example.kosthub.databinding.FragmentPemilikTambahKostBinding
 import com.example.kosthub.ui.pemilik.CheckboxAdapter
 import com.example.kosthub.utils.Const
+import com.example.kosthub.utils.ImageConverter
+import com.example.kosthub.utils.KostType
 import com.example.kosthub.utils.worker.BlurWorker
 import com.example.kosthub.utils.worker.uriToFile
 
@@ -32,6 +38,15 @@ class PemilikTambahKostFragment : Fragment() {
     private lateinit var workManager: WorkManager
 
     private lateinit var imageHolder: ImageView
+
+    private var kostType: KostType? = null
+
+    private val listRules = mutableListOf<Int>()
+    private val listFacility = mutableListOf<Int>()
+    private val listPayment = mutableListOf<Int>()
+
+    private var outsideImage: String? = null
+    private var insideImage: String? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -62,7 +77,8 @@ class PemilikTambahKostFragment : Fragment() {
 
         binding.apply {
             btnNext.setOnClickListener {
-                val toLocation = PemilikTambahKostFragmentDirections.actionPemilikTambahKostFragmentToPemilikTambahKostLocationFragment(isNew)
+                val data = setUpData()
+                val toLocation = PemilikTambahKostFragmentDirections.actionPemilikTambahKostFragmentToPemilikTambahKostLocationFragment(isNew, data)
                 findNavController().navigate(toLocation)
             }
             btnBack.setOnClickListener {
@@ -76,11 +92,78 @@ class PemilikTambahKostFragment : Fragment() {
                 imageHolder = imgOutside
                 openGallery()
             }
+            chipPutra.setOnClickListener {
+                chipClicked(it as CardView)
+            }
+            chipPutra.setOnClickListener {
+                chipClicked(it as CardView)
+            }
+            chipCampur.setOnClickListener {
+                chipClicked(it as CardView)
+            }
         }
 
         showRvKostRules()
         showRvKostFacility()
         showRvPaymentScheme()
+    }
+
+    private fun setUpData(): AddKostRequest {
+        var res: AddKostRequest
+        binding.apply {
+            res = AddKostRequest(
+                paymentScheme = listPayment,
+                address = null,
+                additionalRule = edtAdditionalRules.text.toString(),
+                city = null,
+                latitude = null,
+                description = edtDescription.text.toString(),
+                rules = listRules,
+                type = kostType.toString(),
+                outdoorPhoto = outsideImage,
+                province = null,
+                district = null,
+                name = edtName.text.toString(),
+                indoorPhoto = insideImage,
+                id = null,
+                adressNote = null,
+                longitude = null
+            )
+        }
+        return res
+    }
+
+    private fun chipClicked(view: CardView) {
+        binding.apply {
+            chipUnselected(llCampur, tvCampur)
+            chipUnselected(llPutra, tvPutra)
+            chipUnselected(llPutri, tvPutri)
+            kostType = when (view) {
+                chipPutra -> {
+                    chipSelected(llPutra, tvPutra)
+                    KostType.PUTRA
+                }
+                chipPutri -> {
+                    chipSelected(llPutri, tvPutri)
+                    KostType.PUTRI
+                }
+                else -> {
+                    chipSelected(llCampur, tvCampur)
+                    KostType.CAMPURAN
+                }
+            }
+
+        }
+    }
+
+    private fun chipSelected(view: LinearLayout, text: TextView) {
+        view.setBackgroundColor(resources.getColor(R.color.colorPrimary))
+        text.setTextColor(resources.getColor(R.color.white))
+    }
+
+    private fun chipUnselected(view: LinearLayout, text: TextView) {
+        view.setBackgroundColor(resources.getColor(R.color.white))
+        text.setTextColor(resources.getColor(R.color.black))
     }
 
     private fun showRvKostRules() {
@@ -125,6 +208,14 @@ class PemilikTambahKostFragment : Fragment() {
         }
 
         imageHolder.setImageURI(it)
+
+        if (imageHolder == binding.imgInside) {
+            insideImage = image?.let { it1 -> ImageConverter.imageToBase64(it1) }
+        }
+
+        if (imageHolder == binding.imgOutside) {
+            outsideImage = image?.let { it1 -> ImageConverter.imageToBase64(it1) }
+        }
 
         val data = Data.Builder()
             .putString("image", image?.path)

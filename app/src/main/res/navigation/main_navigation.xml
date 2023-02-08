@@ -186,6 +186,9 @@
         <argument
             android:name="isNew"
             app:argType="boolean" />
+        <argument
+            android:name="data"
+            app:argType="com.example.kosthub.data.remote.model.kostroom.request.AddKostRequest" />
     </fragment>
     <fragment
         android:id="@+id/pemilikSuccessTambahFragment"
