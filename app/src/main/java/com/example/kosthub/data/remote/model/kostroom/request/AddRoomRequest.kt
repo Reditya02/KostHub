@@ -52,10 +52,10 @@ data class BedroomFacilitiesItem(
 data class AddFacilitiesItem(
 
 	@field:SerializedName("price")
-	val price: String? = null,
+    var price: String? = null,
 
 	@field:SerializedName("name")
-	val name: String? = null
+    var name: String? = null
 ) : Parcelable
 
 @Parcelize

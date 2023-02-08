@@ -42,8 +42,14 @@ class PemilikDaftarKamarFragment : Fragment() {
         )
 
         showRecycler()
-        binding.btnBack.setOnClickListener {
-            findNavController().popBackStack()
+        binding.apply {
+            btnBack.setOnClickListener {
+                findNavController().popBackStack()
+            }
+            btnTambahKamar.setOnClickListener {
+                val toTambahKamar = PemilikDaftarKamarFragmentDirections.actionPemilikDaftarKamarFragmentToPemilikTambahKamarFragment(true)
+                findNavController().navigate(toTambahKamar)
+            }
         }
 
     }
@@ -65,7 +71,10 @@ class PemilikDaftarKamarFragment : Fragment() {
         val dialogBinding = DialogPemilikListKamarBinding.inflate(LayoutInflater.from(requireContext()))
 
         dialogBinding.apply {
-
+            cardUbahKost.setOnClickListener {
+                val toTambahKamar = PemilikDaftarKamarFragmentDirections.actionPemilikDaftarKamarFragmentToPemilikTambahKamarFragment(false)
+                findNavController().navigate(toTambahKamar)
+            }
         }
 
         dialog.setContentView(dialogBinding.root)

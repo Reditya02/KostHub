@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:padding="18dp"
-    tools:context=".ui.pemilik.successtambah.PemilikSuccessTambahFragment">
+    tools:context=".ui.pemilik.successtambahkamar.PemilikSuccessTambahKamarFragment">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -30,12 +30,12 @@
         android:layout_marginBottom="40dp" />
 
     <Button
-        android:id="@+id/btn_lihat_kost"
+        android:id="@+id/btn_lihat_kamar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:padding="12dp"
-        android:text="Lihat Kost"
+        android:text="Lihat Kamar"
         style="@style/button"
         android:textAllCaps="false"/>
 

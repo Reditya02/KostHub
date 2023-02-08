@@ -158,7 +158,11 @@
         android:id="@+id/pemilikDaftarKamarFragment"
         android:name="com.example.kosthub.ui.pemilik.daftarkamar.PemilikDaftarKamarFragment"
         android:label="fragment_pemilik_daftar_kamar"
-        tools:layout="@layout/fragment_pemilik_daftar_kamar" />
+        tools:layout="@layout/fragment_pemilik_daftar_kamar" >
+        <action
+            android:id="@+id/action_pemilikDaftarKamarFragment_to_pemilikTambahKamarFragment"
+            app:destination="@id/pemilikTambahKamarFragment" />
+    </fragment>
     <fragment
         android:id="@+id/pemilikTambahKostFragment"
         android:name="com.example.kosthub.ui.pemilik.tambahkost.PemilikTambahKostFragment"
@@ -185,9 +189,9 @@
     </fragment>
     <fragment
         android:id="@+id/pemilikSuccessTambahFragment"
-        android:name="com.example.kosthub.ui.pemilik.successtambah.PemilikSuccessTambahFragment"
+        android:name="com.example.kosthub.ui.pemilik.successtambahkost.PemilikSuccessTambahKostFragment"
         android:label="fragment_pemilik_success_tambah"
-        tools:layout="@layout/fragment_pemilik_success_tambah" >
+        tools:layout="@layout/fragment_pemilik_success_tambah_kost" >
         <action
             android:id="@+id/action_pemilikSuccessTambahFragment_to_pemilikHomeFragment"
             app:destination="@id/pemilikHomeFragment" />
@@ -198,8 +202,33 @@
             android:name="isNew"
             app:argType="boolean" />
     </fragment>
-
-
+    <fragment
+        android:id="@+id/pemilikTambahKamarFragment"
+        android:name="com.example.kosthub.ui.pemilik.tambahkamar.PemilikTambahKamarFragment"
+        android:label="fragment_pemilik_tambah_kamar"
+        tools:layout="@layout/fragment_pemilik_tambah_kamar" >
+        <action
+            android:id="@+id/action_pemilikTambahKamarFragment_to_pemilikSuccessTambahKamarFragment"
+            app:destination="@id/pemilikSuccessTambahKamarFragment" />
+        <argument
+            android:name="isNew"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/pemilikSuccessTambahKamarFragment"
+        android:name="com.example.kosthub.ui.pemilik.successtambahkamar.PemilikSuccessTambahKamarFragment"
+        android:label="fragment_pemilik_success_tambah_kamar"
+        tools:layout="@layout/fragment_pemilik_success_tambah_kamar" >
+        <action
+            android:id="@+id/action_pemilikSuccessTambahKamarFragment_to_pemilikDaftarKamarFragment"
+            app:destination="@id/pemilikDaftarKamarFragment" />
+        <argument
+            android:name="isNew"
+            app:argType="boolean" />
+        <action
+            android:id="@+id/action_pemilikSuccessTambahKamarFragment_to_pemilikHomeFragment"
+            app:destination="@id/pemilikHomeFragment" />
+    </fragment>
 
 
 </navigation>
