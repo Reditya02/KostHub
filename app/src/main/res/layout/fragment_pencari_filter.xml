@@ -23,39 +23,36 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/btn_back"
+                android:id="@+id/btn_back"/>
 
 
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_jenisKos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="45dp">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_putra"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:chipText="Putra" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_putri"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:chipText="Putri" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_campur"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:chipText="Campur" />
 
 
-
-            <!--            <com.google.android.material.chip.ChipGroup-->
-            <!--                android:id="@+id/chip_jenisKos"-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                tools:layout_editor_absoluteX="-1dp"-->
-            <!--                tools:layout_editor_absoluteY="16dp">-->
-
-            <!--                <com.google.android.material.chip.Chip-->
-            <!--                    android:id="@+id/chip_putra"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    app:chipText="Putra" />-->
-
-            <!--                <com.google.android.material.chip.Chip-->
-            <!--                    android:id="@+id/chip_putri"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    app:chipText="Putri" />-->
-
-            <!--                <com.google.android.material.chip.Chip-->
-            <!--                    android:id="@+id/chip_campur"-->
-            <!--                    android:layout_width="wrap_content"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    app:chipText="Campur" />-->
-
-
-            <!--            </com.google.android.material.chip.ChipGroup>-->
+            </com.google.android.material.chip.ChipGroup>
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
