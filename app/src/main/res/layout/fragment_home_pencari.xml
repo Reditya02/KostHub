@@ -1,14 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.pencari.home.HomePencariFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="10dp"
+        android:backgroundTint="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintDimensionRatio="W, 72:360">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_avatar"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/gambar_kost"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_nama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Halo, Lorem!"
+            app:layout_constraintBottom_toBottomOf="@id/img_avatar"
+            app:layout_constraintLeft_toRightOf="@id/img_avatar"
+            app:layout_constraintTop_toTopOf="@id/img_avatar" />
+
+        <ImageView
+            android:id="@+id/btn_notification"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:src="@drawable/btn_notif_svg"
+            app:layout_constraintBottom_toBottomOf="@+id/img_avatar"
+            app:layout_constraintStart_toEndOf="@+id/tv_nama"
+            app:layout_constraintTop_toTopOf="@+id/img_avatar" />
+
+        <ImageView
+            android:id="@+id/btn_wishlist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/btn_wishlist"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_notification"
+            app:layout_constraintStart_toEndOf="@+id/btn_notification"
+            app:layout_constraintTop_toTopOf="@+id/btn_notification" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbar"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp">
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/search_field"
+                android:layout_width="300dp"
+                android:layout_height="46dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:background="#EBE9EC"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.denzcoskun.imageslider.ImageSlider
+                android:id="@+id/is_promo"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="28dp"
+                app:layout_constraintDimensionRatio="H, 32:15"
+                app:layout_constraintHorizontal_bias="0.725"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/search_field">
+
+            </com.denzcoskun.imageslider.ImageSlider>
+
+            <TextView
+                android:id="@+id/tv_kostHits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Kost Hits"
+                android:textColor="#171717"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/is_promo"
+                app:layout_constraintTop_toBottomOf="@+id/is_promo" />
+
+            <TextView
+                android:id="@+id/tv_lihatsemua_kosthits"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lihat semua"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_kostHits"
+                app:layout_constraintEnd_toEndOf="@+id/is_promo"
+                app:layout_constraintTop_toTopOf="@+id/tv_kostHits" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_lihatsemua_kosthits"
+                app:layout_constraintStart_toStartOf="@+id/tv_kostHits"
+                app:layout_constraintTop_toBottomOf="@+id/tv_kostHits" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/list_kostHits"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_lihatsemua_kosthits"
+                app:layout_constraintStart_toStartOf="@+id/tv_kostHits"
+                app:layout_constraintTop_toBottomOf="@+id/tv_kostHits" />
+
+            <TextView
+                android:id="@+id/tv_kostBaru"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Kost Baru"
+                android:textColor="#171717"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/list_kostHits"
+                app:layout_constraintTop_toBottomOf="@+id/list_kostHits" />
+
+            <TextView
+                android:id="@+id/tv_lihatsemua_kostBaru"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lihat semua"
+                android:textColor="#171717"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_kostBaru"
+                app:layout_constraintEnd_toEndOf="@+id/is_promo"
+                app:layout_constraintTop_toTopOf="@+id/tv_kostBaru" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:id="@+id/list_kostBaru"
+                app:layout_constraintEnd_toEndOf="@+id/tv_lihatsemua_kostBaru"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/tv_kostBaru"
+                app:layout_constraintTop_toBottomOf="@+id/tv_kostBaru" />
+
+            <TextView
+                android:id="@+id/tv_areaPopuler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:fontFamily="@font/poppins_bold"
+                android:text="Area Kost Populer"
+                android:textColor="#171717"
+                android:textSize="15sp"
+                app:layout_constraintStart_toStartOf="@+id/list_kostBaru"
+                app:layout_constraintTop_toBottomOf="@+id/list_kostBaru" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:id="@+id/list_areaPopuler"
+                app:layout_constraintEnd_toEndOf="@+id/tv_lihatsemua_kostBaru"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="@+id/tv_areaPopuler"
+                app:layout_constraintTop_toBottomOf="@+id/tv_areaPopuler" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="408dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/pencari_bottom_navigation_menu" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
