@@ -53,9 +53,14 @@ class PilihRoleFragment : Fragment() {
                 Const.loginType = pencari
             }
 
+//            btnPilih.setOnClickListener {
+//                val toRegister = PilihRoleFragmentDirections.actionPilihRoleFragmentToRegisterFragment()
+//                findNavController().navigate(toRegister)
+//            }
+
             btnPilih.setOnClickListener {
-                val toRegister = PilihRoleFragmentDirections.actionPilihRoleFragmentToRegisterFragment()
-                findNavController().navigate(toRegister)
+                val toLogin = PilihRoleFragmentDirections.actionPilihRoleFragmentToLoginFragment()
+                findNavController().navigate(toLogin)
             }
 
         }

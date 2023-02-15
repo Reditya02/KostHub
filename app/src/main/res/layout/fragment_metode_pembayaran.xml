@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.pencari.payment.MetodePembayaranFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="0dp"
+        android:layout_height="88dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="19dp"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:id="@+id/tv_pengajuan_sewa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Metode Pembayaran"
+            android:textColor="#171717"
+            android:textSize="23sp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tv_ewallet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="E-Wallet"
+        android:textColor="#303030"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+
+    <TextView
+        android:id="@+id/tv_bank"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_bold"
+        android:text="Bank"
+        android:textColor="#303030"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView21" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/metodepembayaran_dana"
+        app:layout_constraintStart_toStartOf="@+id/tv_ewallet"
+        app:layout_constraintTop_toBottomOf="@+id/tv_ewallet" />
+
+    <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/metodepembayaran_ovo"
+        app:layout_constraintStart_toStartOf="@+id/imageView17"
+        app:layout_constraintTop_toBottomOf="@+id/imageView17" />
+
+    <ImageView
+        android:id="@+id/imageView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/metodepembayaran_gopay"
+        app:layout_constraintStart_toStartOf="@+id/imageView19"
+        app:layout_constraintTop_toBottomOf="@+id/imageView19" />
+
+    <ImageView
+        android:id="@+id/imageView21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/metodepembayaran_shopeepay"
+        app:layout_constraintStart_toStartOf="@+id/imageView20"
+        app:layout_constraintTop_toBottomOf="@+id/imageView20" />
+
+    <ImageView
+        android:id="@+id/imageView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/metode_bca2"
+        app:layout_constraintStart_toStartOf="@+id/tv_bank"
+        app:layout_constraintTop_toBottomOf="@+id/tv_bank" />
+
+    <ImageView
+        android:id="@+id/imageView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/metodepembayaran_bri"
+        app:layout_constraintStart_toStartOf="@+id/imageView24"
+        app:layout_constraintTop_toBottomOf="@+id/imageView24" />
+
+    <ImageView
+        android:id="@+id/imageView27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/bni2"
+        app:layout_constraintStart_toStartOf="@+id/imageView25"
+        app:layout_constraintTop_toBottomOf="@+id/imageView25" />
+
+    <ImageView
+        android:id="@+id/imageView28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:src="@drawable/card_bank_lain"
+        app:layout_constraintStart_toStartOf="@+id/imageView27"
+        app:layout_constraintTop_toBottomOf="@+id/imageView27" />
+
+    <ImageView
+        android:id="@+id/imageView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:src="@drawable/btn_pilih_pembayaran"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

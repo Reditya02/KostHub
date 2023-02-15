@@ -35,6 +35,8 @@ class Welcome4Fragment : Fragment() {
                 findNavController().navigate(toPilihRoleFragment)
             }
 
+
+
         }
 
     }

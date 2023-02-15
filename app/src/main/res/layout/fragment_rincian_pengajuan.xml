@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.pencari.booking.RincianPengajuanFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="0dp"
+        android:layout_height="88dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="19dp"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:id="@+id/tv_pengajuan_sewa"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:fontFamily="@font/poppins_bold"
+            android:text="Rincian Pengajuan"
+            android:textColor="#171717"
+            android:textSize="23sp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="20dp">
+
+            <ImageView
+                android:id="@+id/imageView36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/card_pengajuansewa"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.459"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView37"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:layout_marginTop="20dp"
+                android:src="@drawable/group_profilpencari"
+                app:layout_constraintEnd_toEndOf="@+id/imageView36"
+                app:layout_constraintStart_toStartOf="@+id/imageView36"
+                app:layout_constraintTop_toBottomOf="@+id/imageView36" />
+
+            <ImageView
+                android:id="@+id/imageView38"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/group_jumlahpenyewa"
+                app:layout_constraintEnd_toEndOf="@+id/imageView37"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/imageView37"
+                app:layout_constraintTop_toBottomOf="@+id/imageView37" />
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="60dp"
+                android:src="@drawable/group_dokumenpersyaratan"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/imageView38"
+                app:layout_constraintStart_toStartOf="@+id/imageView38"
+                app:layout_constraintTop_toBottomOf="@+id/imageView38" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/btn_ajukansewa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/btn_ajukansewa"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

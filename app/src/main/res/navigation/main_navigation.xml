@@ -69,6 +69,10 @@
             android:id="@+id/action_pilihRoleFragment_to_registerFragment"
             app:destination="@id/registerFragment" />
 
+        <action
+            android:id="@+id/action_pilihRoleFragment_to_loginFragment"
+            app:destination="@+id/loginFragment"/>
+
     </fragment>
 
     <fragment
